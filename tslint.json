@@ -1,5 +1,16 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "extends": ["tslint-config-airbnb"],
+  "rules": {
+    "interface-name": [true, "always-prefix"],
+    "max-line-length": [true, 140],
+    "semicolon": [true, "never"],
+    "trailing-comma": false,
+    "variable-name": [true, "check-format", "allow-pascal-case", "allow-leading-underscore"],
+    "function-name": false
+  },
+  "env": {
+    "jest": true
+  },
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
