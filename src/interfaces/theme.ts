@@ -27,4 +27,11 @@ export interface ITheme {
   button: {
     sizes: IThemeSizes
   }
+  fontSize: {
+    small: string
+    large: string
+    medium: string
+    xlarge: string
+    largeIcon: string
+  }
 }

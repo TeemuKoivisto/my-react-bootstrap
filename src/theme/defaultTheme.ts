@@ -28,4 +28,11 @@ export const defaultTheme : ITheme = {
       },
     }
   },
+  fontSize: {
+    small: '16px',
+    medium: '18px',
+    large: '24px',
+    xlarge: '40px',
+    largeIcon: '50px'
+  },
 }

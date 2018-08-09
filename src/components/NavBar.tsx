@@ -43,5 +43,4 @@ const NavListLink = styled(NavLink)`
     background-color: ${({ theme }) => theme.color.primary};
     color: ${({ theme }) => theme.color.white };
   }
-
 `
