@@ -3,3 +3,13 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.main-wrapper {
+  font-family: 'Raleway', sans-serif;
+  margin: auto;
+  max-width: 980px;
+}
+
+.main-container {
+  margin: 20px;
+}
