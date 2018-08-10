@@ -8,7 +8,8 @@ export const Button = styled.button`
   color: ${({ theme }) => theme.color.primary };
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSize.medium };
-  padding: 20px 10px 20px 10px;
+  max-width: 150px;
+  padding: 10px 10px 10px 10px;
   text-decoration: none;
   &:hover {
     background-color: ${({ theme }) => theme.color.primary};
