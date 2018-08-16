@@ -5,10 +5,13 @@ import styled from '../theme/styled'
 import { IStores } from '../stores'
 import { IUser } from '../interfaces/user'
 
+import { ErrorOrSpinner } from '../components/ErrorOrSpinner'
+
 // import { Button } from '../elements/Button'
 
 interface IUsersPageInjectedProps {
   users: IUser[]
+  loading: boolean
   getUsers: () => void
 }
 
@@ -20,20 +23,22 @@ class UsersPageClass extends React.PureComponent<{}> {
     this.injected.getUsers()
   }
   public render() {
-    const { users } = this.injected
+    const { users, loading } = this.injected
     return (
       <UsersPageContainer>
         <header>
           <h1>Users</h1>
         </header>
-        <UsersList>
-          { users.map((user: IUser) =>
-          <UsersListItem>
-            <p>Name: {user.name}</p>
-            <p>Email: {user.email}</p>
-          </UsersListItem>
-          )}
-        </UsersList>
+        <ErrorOrSpinner loading={loading}>
+          <UsersList>
+            { users.map((user: IUser) =>
+            <UsersListItem>
+              <p>Name: {user.name}</p>
+              <p>Email: {user.email}</p>
+            </UsersListItem>
+            )}
+          </UsersList>
+        </ErrorOrSpinner>
       </UsersPageContainer>
     )
   }
@@ -57,5 +62,6 @@ const UsersListItem = styled.li`
 
 export const UsersPage = inject((stores: IStores) => ({
   users: stores.userStore.users,
+  loading: stores.userStore.loading,
   getUsers: stores.userStore.getUsers,
 }))(UsersPageClass)

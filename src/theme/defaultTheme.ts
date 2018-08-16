@@ -9,6 +9,34 @@ export const defaultTheme : ITheme = {
     primary: '#2979FF',
     secondary: '#82B1FF'
   },
+  spinner: {
+    sizes: {
+      small: {
+        borderWidth: '2px',
+        margin: '0 8px 0 8px',
+        height: '14px',
+        width: '14px',
+      },
+      medium: {
+        borderWidth: '3px',
+        margin: '10px 12px 10px 12px',
+        height: '16px',
+        width: '16px',
+      },
+      large: {
+        borderWidth: '3px',
+        margin: '5px 12px 5px 12px',
+        height: '20px',
+        width: '20px',
+      },
+      // yuge: {
+      //   borderWidth: '4px',
+      //   margin: '0',
+      //   height: '20px',
+      //   width: '20px',
+      // }
+    }
+  },
   button: {
     sizes: {
       small: {

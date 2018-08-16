@@ -21,7 +21,9 @@ export class AuthStoreClass implements IAuthStore {
   logInUser = async (credentials: ILoginCredentials) => {
     const result = await api.logInUser(credentials)
     runInAction(() => {
-      this.loggedInUser = result
+      if (result) {
+        this.loggedInUser = result.user
+      }
     })
   }
 

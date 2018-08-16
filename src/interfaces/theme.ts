@@ -16,6 +16,8 @@ export interface ISize {
   width?: string
 }
 
+export type IThemeSizeTypes = 'small' | 'medium' | 'large'
+
 export interface IThemeSizes {
   small: ISize
   medium: ISize
@@ -25,6 +27,9 @@ export interface IThemeSizes {
 export interface ITheme {
   color: IThemeColor
   button: {
+    sizes: IThemeSizes
+  }
+  spinner: {
     sizes: IThemeSizes
   }
   fontSize: {

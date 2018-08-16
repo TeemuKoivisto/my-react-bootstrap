@@ -20,13 +20,7 @@ export class ErrorStoreClass implements IErrorStore {
   @observable error = EMPTY_ERROR
 
   @computed get errorMsg() : string {
-    if (this.error.statusCode === 404) {
-      return 'Oho, täältä ei taida löytyä mitään.'
-    }
-    if (this.error.msg) {
-      return `Hupsista, jokin taisi mennä rikki. Pahoittelut ja yritä jonkin ajan päästä uudestaan.`
-    }
-    return ''
+    return this.error.msg
   }
 
   @action setError = (msg: string, statusCode: number) => {

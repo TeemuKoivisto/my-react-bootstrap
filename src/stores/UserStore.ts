@@ -5,17 +5,21 @@ import { IUser } from '../interfaces/user'
 
 export interface IUserStore {
   users: IUser[]
+  loading: boolean
   getUsers: () => void
 }
 
 export class UserStoreClass implements IUserStore {
   @observable users: IUser[] = []
+  @observable loading = false
 
   @action
   getUsers = async () => {
-    const { users } = await api.getUsers()
+    this.loading = true
+    const response = await api.getUsers()
     runInAction(() => {
-      this.users = users
+      if (response) this.users = response.users
+      this.loading = false
     })
   }
 }
