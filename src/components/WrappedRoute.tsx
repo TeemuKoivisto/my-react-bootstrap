@@ -4,19 +4,19 @@ import styled from '../theme/styled'
 
 import { NavBar } from './NavBar'
 
-interface IWrappedRoute extends RouteProps{
+interface IWrappedRoute extends RouteProps {
   component: React.ComponentClass
 }
 
 const renderNoMainContainerWrapper = (Component: React.ComponentClass) => (props: RouteProps) =>
   <MainWrapper>
-    <NavBar />
+    <NavBar {...props}/>
     <Component {...props}/>
   </MainWrapper>
 
 const renderWrapper = (Component: React.ComponentClass) => (props: RouteProps) =>
   <MainWrapper>
-    <NavBar />
+    <NavBar {...props}/>
     <MainContainer>
       <Component {...props}/>
     </MainContainer>
