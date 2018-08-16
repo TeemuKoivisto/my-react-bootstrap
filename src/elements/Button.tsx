@@ -7,7 +7,7 @@ export const Button = styled.button`
   border-radius: 5px;
   color: ${({ theme }) => theme.color.primary };
   cursor: pointer;
-  font-size: ${({ theme }) => theme.fontSize.medium };
+  font-size: ${({ theme }) => theme.fontSize.small };
   max-width: 150px;
   padding: 10px 10px 10px 10px;
   text-decoration: none;

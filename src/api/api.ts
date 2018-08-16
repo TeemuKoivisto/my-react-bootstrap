@@ -7,9 +7,6 @@ const defaultHeaders = {
   'Content-Type': 'application/json'
 }
 
-const loginURL = `${REACT_APP_API_URL}/login`
-const usersURL = `${REACT_APP_API_URL}/user`
-
 const createRequest = (url: string, options: any) : Promise<any> => {
   errorStore.resetError()
   return fetch(url, options)
@@ -29,7 +26,10 @@ const post = <T>(url: string, body: any, headers = defaultHeaders) : Promise<T> 
   createRequest(url, { headers, method: 'POST', body: JSON.stringify(body) })
 
 export const logInUser = (credentials: ILoginCredentials): Promise<IUser> =>
-  post<IUser>(loginURL, credentials)
+  post<IUser>(`${REACT_APP_API_URL}/login`, credentials)
 
-export const getUsers = (): Promise<IUser> =>
-  get<IUser>(usersURL)
+export const getUsers = (): Promise<IUser[]> =>
+  get<IUser[]>(`${REACT_APP_API_URL}/users`)
+
+export const createUser = (payload: any): Promise<IUser> =>
+  post<IUser>(`${REACT_APP_API_URL}/user`, payload)

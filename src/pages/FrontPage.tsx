@@ -41,7 +41,16 @@ class FrontPageClass extends React.Component<{}, IFrontPageState> {
     e.preventDefault()
     this.injected.logInUser(this.state.loginForm)
   }
+  private handleSetDefaultValues = (e: React.MouseEvent) : void => {
+    this.setState({
+      loginForm: {
+        email: 'admin@asdf.fi',
+        password: 'qwertyui',
+      }
+    })
+  }
   public render() {
+    const { loginForm: { email, password } } = this.state
     return (
       <section>
         <header>
@@ -50,14 +59,15 @@ class FrontPageClass extends React.Component<{}, IFrontPageState> {
         <p>
           This is my example React bootstrap.
         </p>
+        <Button onClick={this.handleSetDefaultValues}>Admin login</Button>
         <LoginForm onSubmit={this.handleLoginSubmit}>
           <LoginField>
             <label>Email</label>
-            <LoginInput type="text" onChange={this.handleInputChange('email')}/>
+            <LoginInput type="text" value={email} onChange={this.handleInputChange('email')}/>
           </LoginField>
           <LoginField>
             <label>Password</label>
-            <LoginInput type="password" onChange={this.handleInputChange('password')}/>
+            <LoginInput type="password" value={password} onChange={this.handleInputChange('password')}/>
           </LoginField>
           <Button type="submit">Submit</Button>
         </LoginForm>
