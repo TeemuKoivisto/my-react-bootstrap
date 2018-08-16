@@ -13,10 +13,11 @@ export interface IAuthStore {
   jwt: IJwt
   isAuthenticated: boolean
   logInUser: (credentials: ILoginCredentials) => void
+  logout: () => void
 }
 
 export class AuthStoreClass implements IAuthStore {
-  @observable loggedInUser = EMPTY_USER
+  @observable loggedInUser: IUser = EMPTY_USER
   @observable jwt = { expires: -1, token: '' }
 
   @action
@@ -28,6 +29,11 @@ export class AuthStoreClass implements IAuthStore {
         this.jwt = result.jwt
       }
     })
+  }
+
+  @action
+  logout = () => {
+    this.loggedInUser = EMPTY_USER
   }
 
   @computed

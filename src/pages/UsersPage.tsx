@@ -31,8 +31,8 @@ class UsersPageClass extends React.PureComponent<{}> {
         </header>
         <ErrorOrSpinner loading={loading}>
           <UsersList>
-            { users.map((user: IUser) =>
-            <UsersListItem>
+            { users.map((user: IUser, i: number) =>
+            <UsersListItem key={i}>
               <p>Name: {user.name}</p>
               <p>Email: {user.email}</p>
             </UsersListItem>
