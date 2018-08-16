@@ -1,4 +1,4 @@
-import { action, runInAction, observable } from 'mobx'
+import { action, computed, runInAction, observable } from 'mobx'
 import * as api from '../api/api'
 
 import { IUser, ILoginCredentials } from '../interfaces/user'
@@ -10,6 +10,7 @@ const EMPTY_USER = {
 
 export interface IAuthStore {
   loggedInUser: IUser
+  isAuthenticated: boolean
   logInUser: (credentials: ILoginCredentials) => void
 }
 
@@ -22,6 +23,11 @@ export class AuthStoreClass implements IAuthStore {
     runInAction(() => {
       this.loggedInUser = result
     })
+  }
+
+  @computed
+  get isAuthenticated() {
+    return this.loggedInUser.name !== ''
   }
 }
 

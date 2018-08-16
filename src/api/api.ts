@@ -28,8 +28,8 @@ const post = <T>(url: string, body: any, headers = defaultHeaders) : Promise<T> 
 export const logInUser = (credentials: ILoginCredentials): Promise<IUser> =>
   post<IUser>(`${REACT_APP_API_URL}/login`, credentials)
 
-export const getUsers = (): Promise<IUser[]> =>
-  get<IUser[]>(`${REACT_APP_API_URL}/users`)
+export const getUsers = (): Promise<{users: IUser[]}> =>
+  get<{users: IUser[]}>(`${REACT_APP_API_URL}/users`)
 
 export const createUser = (payload: any): Promise<IUser> =>
   post<IUser>(`${REACT_APP_API_URL}/user`, payload)

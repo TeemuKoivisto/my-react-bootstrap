@@ -8,7 +8,7 @@ export class NavBar extends React.Component<{}, {}> {
       <NavContainer>
         <NavLinkList>
           <NavListItem><NavListLink to="/">Front page</NavListLink></NavListItem>
-          <NavListItem><NavListLink to="/other">Other page</NavListLink></NavListItem>
+          <NavListItem><NavListLink to="/users">Users page</NavListLink></NavListItem>
         </NavLinkList>
       </NavContainer>
     )
