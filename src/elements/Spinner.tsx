@@ -1,10 +1,10 @@
 import { StyledComponentClass } from 'styled-components'
 
 import styled, { keyframes } from '../theme/styled'
-import { ITheme, IThemeSizeTypes } from '../interfaces/theme'
+import { ITheme, ThemeSizeTypes } from '../interfaces/theme'
 
 export interface ISpinnerProps {
-  size: IThemeSizeTypes
+  size: ThemeSizeTypes
   color?: string
 }
 

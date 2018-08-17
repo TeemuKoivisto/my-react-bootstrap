@@ -29,12 +29,6 @@ export const defaultTheme : ITheme = {
         height: '20px',
         width: '20px',
       },
-      // yuge: {
-      //   borderWidth: '4px',
-      //   margin: '0',
-      //   height: '20px',
-      //   width: '20px',
-      // }
     }
   },
   button: {

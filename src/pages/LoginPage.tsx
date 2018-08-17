@@ -2,22 +2,27 @@ import * as React from 'react'
 import { inject } from 'mobx-react'
 import styled from '../theme/styled'
 
+import { RouteComponentProps } from 'react-router'
+
 import { IStores } from '../stores'
-import { IUser, ILoginCredentials } from '../interfaces/user'
+import { ILoginCredentials } from '../interfaces/user'
 
 import { Button } from '../elements/Button'
 
-interface ILoginPageInjectedProps {
-  loggedInUser: IUser
-  logInUser: (credentials: ILoginCredentials) => void
+interface ILoginPageProps extends RouteComponentProps<{}> {
+}
+
+interface ILoginPageInjectedProps extends ILoginPageProps {
+  isAuthenticated: boolean
+  logInUser: (credentials: ILoginCredentials) => Promise<boolean>
 }
 
 interface ILoginPageState {
   loginForm: ILoginCredentials
 }
 
-class LoginPageClass extends React.Component<{}, ILoginPageState> {
-  constructor(props: {}) {
+class LoginPageClass extends React.Component<ILoginPageProps, ILoginPageState> {
+  constructor(props: ILoginPageProps) {
     super(props)
     this.state = {
       loginForm: {
@@ -29,6 +34,11 @@ class LoginPageClass extends React.Component<{}, ILoginPageState> {
   private get injected() {
     return this.props as ILoginPageInjectedProps
   }
+  public componentDidMount() {
+    if (this.injected.isAuthenticated) {
+      this.props.history.push(this.props.location.pathname)
+    }
+  }
   private handleInputChange = (field: 'email' | 'password') => (e: React.ChangeEvent<HTMLInputElement>) : void => {
     const { loginForm } = this.state
     this.setState(Object.assign({}, { loginForm }, {
@@ -37,9 +47,12 @@ class LoginPageClass extends React.Component<{}, ILoginPageState> {
       }
     }))
   }
-  private handleLoginSubmit = (e: React.FormEvent) : void => {
+  private handleLoginSubmit = async (e: React.FormEvent) : Promise<void> => {
     e.preventDefault()
-    this.injected.logInUser(this.state.loginForm)
+    const success = this.injected.logInUser(this.state.loginForm)
+    if (success) {
+      this.props.history.push('')
+    }
   }
   private handleSetDefaultValues = (e: React.MouseEvent) : void => {
     this.setState({
@@ -99,6 +112,6 @@ const LoginInput = styled.input`
 `
 
 export const LoginPage = inject((stores: IStores) => ({
-  loggedInUser: stores.authStore.loggedInUser,
+  isAuthenticated: stores.authStore.isAuthenticated,
   logInUser: stores.authStore.logInUser,
 }))(LoginPageClass)

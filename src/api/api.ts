@@ -10,7 +10,7 @@ const defaultHeaders = {
 const authenticatedHeaders = () => ({
   Accept: 'application/json',
   'Content-Type': 'application/json',
-  Authorization: `Bearer ${authStore && authStore.jwt.token}`
+  Authorization: `Bearer ${authStore.jwt.token}`
 })
 
 const createRequest = (url: string, options: any) : Promise<any> => {
@@ -25,17 +25,17 @@ const createRequest = (url: string, options: any) : Promise<any> => {
     })
 }
 
-const get = <T>(url: string, headers = defaultHeaders) : Promise<T> =>
+const get = <T>(url: string, headers = defaultHeaders) : Promise<T | undefined> =>
   createRequest(url, { headers, method: 'GET' })
 
-const post = <T>(url: string, body: any, headers = defaultHeaders) : Promise<T> =>
+const post = <T>(url: string, body: any, headers = defaultHeaders) : Promise<T | undefined> =>
   createRequest(url, { headers, method: 'POST', body: JSON.stringify(body) })
 
 export const logInUser = (credentials: ILoginCredentials): Promise<ILoginResponse | undefined> =>
-  post<ILoginResponse | undefined>(`${REACT_APP_API_URL}/login`, credentials)
+  post<ILoginResponse>(`${REACT_APP_API_URL}/login`, credentials)
 
 export const getUsers = (): Promise<{users: IUser[]} | undefined> =>
-  get<{users: IUser[]} | undefined>(`${REACT_APP_API_URL}/users`, authenticatedHeaders())
+  get<{users: IUser[]}>(`${REACT_APP_API_URL}/users`, authenticatedHeaders())
 
 export const createUser = (payload: any): Promise<IUser | undefined> =>
-  post<IUser | undefined>(`${REACT_APP_API_URL}/user`, payload, authenticatedHeaders())
+  post<IUser>(`${REACT_APP_API_URL}/user`, payload, authenticatedHeaders())

@@ -16,7 +16,7 @@ export interface ISize {
   width?: string
 }
 
-export type IThemeSizeTypes = 'small' | 'medium' | 'large'
+export type ThemeSizeTypes = 'small' | 'medium' | 'large'
 
 export interface IThemeSizes {
   small: ISize

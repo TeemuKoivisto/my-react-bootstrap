@@ -12,7 +12,7 @@ export interface IAuthStore {
   loggedInUser: IUser
   jwt: IJwt
   isAuthenticated: boolean
-  logInUser: (credentials: ILoginCredentials) => void
+  logInUser: (credentials: ILoginCredentials) => Promise<boolean>
   logout: () => void
 }
 
@@ -29,6 +29,7 @@ export class AuthStoreClass implements IAuthStore {
         this.jwt = result.jwt
       }
     })
+    return result ? true : false
   }
 
   @action
