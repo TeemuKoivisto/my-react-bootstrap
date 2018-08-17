@@ -4,11 +4,13 @@ NAMESPACE="teemukoivisto"
 IMAGE_NAME="my-react-bootstrap"
 
 rm-images() {
-  rm-containers
-  docker images | grep "${NAMESPACE}"/"${IMAGE_NAME}" | awk '{print $3}' | xargs docker rmi -f
+  local GREP_STRING=$1
+  rm-containers "${GREP_STRING}"
+  docker images | grep "${GREP_STRING}" | awk '{print $3}' | xargs docker rmi -f
 }
 
 rm-containers() {
-  docker ps -a | grep "${NAMESPACE}"/"${IMAGE_NAME}" | awk '{print $1}' | xargs docker stop
-  docker ps -a | grep "${NAMESPACE}"/"${IMAGE_NAME}" | awk '{print $1}' | xargs docker rm
+  local GREP_STRING=$1
+  docker ps -a | grep "${GREP_STRING}" | awk '{print $1}' | xargs docker stop
+  docker ps -a | grep "${GREP_STRING}" | awk '{print $1}' | xargs docker rm
 }

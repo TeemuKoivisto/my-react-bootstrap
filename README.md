@@ -19,9 +19,8 @@ To run the image then simply run `./run.sh`. It will grep the top-most image in 
 
 There's a set of utility functions to help our with managing the images that you can load to your terminal session with: `. functions.sh`. Currently there's the following methods:
 
-* `rm-containers` will first stop all the running containers of this image and then remove them.
-
-* `rm-images` will do the same thing as `rm-containers` but also delete all the images of this namespace and image name.
+* `rm-containers <grepped-string>` eg. `rm-containers teemukoivisto` will first stop all the running containers with specified string in their name and then remove them.
+* `rm-images <grepped-string>`  eg. `rm-images react` will do the same thing as `rm-containers` but also delete all their images.
 
 ## Git commands
 
