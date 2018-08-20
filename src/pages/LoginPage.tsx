@@ -41,11 +41,12 @@ class LoginPageClass extends React.Component<ILoginPageProps, ILoginPageState> {
   }
   private handleInputChange = (field: 'email' | 'password') => (e: React.ChangeEvent<HTMLInputElement>) : void => {
     const { loginForm } = this.state
-    this.setState(Object.assign({}, { loginForm }, {
+    this.setState({
       loginForm: {
+        ...loginForm,
         [field]: e.currentTarget.value
       }
-    }))
+    })
   }
   private handleLoginSubmit = async (e: React.FormEvent) : Promise<void> => {
     e.preventDefault()
@@ -70,11 +71,11 @@ class LoginPageClass extends React.Component<ILoginPageProps, ILoginPageState> {
         <LoginForm onSubmit={this.handleLoginSubmit}>
           <LoginField>
             <label>Email</label>
-            <LoginInput type="text" value={email} onChange={this.handleInputChange('email')}/>
+            <LoginInput type="text" value={email || ''} onChange={this.handleInputChange('email')}/>
           </LoginField>
           <LoginField>
             <label>Password</label>
-            <LoginInput type="password" value={password} onChange={this.handleInputChange('password')}/>
+            <LoginInput type="password" value={password || ''} onChange={this.handleInputChange('password')}/>
           </LoginField>
           <Button type="submit">Submit</Button>
         </LoginForm>
