@@ -1,8 +1,5 @@
 #!/bin/bash -xe
 
-NAMESPACE="teemukoivisto"
-IMAGE_NAME="my-react-bootstrap"
-
 rm-images() {
   local GREP_STRING=$1
   rm-containers "${GREP_STRING}"

@@ -22,7 +22,7 @@ class FrontPageClass extends React.Component<{}, IFrontPageState> {
     return (
       <FrontPageContainer>
         <header>
-          <h1>Hi there</h1>
+          <h1>Hi there!</h1>
         </header>
         <p>
           This is my example React bootstrap.

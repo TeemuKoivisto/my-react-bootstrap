@@ -1,6 +1,6 @@
 #!/bin/bash -xe
 
-LOCAL_PORT=9666
+LOCAL_PORT=9801
 CONTAINER_PORT=80
 
 NAMESPACE="teemukoivisto"

@@ -71,11 +71,11 @@ class LoginPageClass extends React.Component<ILoginPageProps, ILoginPageState> {
         <LoginForm onSubmit={this.handleLoginSubmit}>
           <LoginField>
             <label>Email</label>
-            <LoginInput type="text" value={email || ''} onChange={this.handleInputChange('email')}/>
+            <LoginInput type="text" value={email} onChange={this.handleInputChange('email')}/>
           </LoginField>
           <LoginField>
             <label>Password</label>
-            <LoginInput type="password" value={password || ''} onChange={this.handleInputChange('password')}/>
+            <LoginInput type="password" value={password} onChange={this.handleInputChange('password')}/>
           </LoginField>
           <Button type="submit">Submit</Button>
         </LoginForm>
