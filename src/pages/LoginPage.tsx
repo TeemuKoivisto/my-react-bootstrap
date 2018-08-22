@@ -55,19 +55,32 @@ class LoginPageClass extends React.Component<ILoginPageProps, ILoginPageState> {
       this.props.history.push('')
     }
   }
-  private handleSetDefaultValues = (e: React.MouseEvent) : void => {
-    this.setState({
-      loginForm: {
-        email: 'admin@asdf.fi',
-        password: 'qwertyui',
-      }
-    })
+  private handleSetDefaultValues = (type: 'admin' | 'user') => (e: React.MouseEvent) : void => {
+    if (type === 'admin') {
+      this.setState({
+        loginForm: {
+          email: 'admin@asdf.fi',
+          password: 'qwertyui',
+        }
+      })
+    }
+    if (type === 'user') {
+      this.setState({
+        loginForm: {
+          email: 'morty@asdf.fi',
+          password: 'asdfasdf',
+        }
+      })
+    }
   }
   public render() {
     const { loginForm: { email, password } } = this.state
     return (
       <section>
-        <Button onClick={this.handleSetDefaultValues}>Admin login</Button>
+        <LoginButtonsContainer>
+          <Button onClick={this.handleSetDefaultValues('admin')}>Admin login</Button>
+          <Button onClick={this.handleSetDefaultValues('user')}>User login</Button>
+        </LoginButtonsContainer>
         <LoginForm onSubmit={this.handleLoginSubmit}>
           <LoginField>
             <label>Email</label>
@@ -83,6 +96,14 @@ class LoginPageClass extends React.Component<ILoginPageProps, ILoginPageState> {
     )
   }
 }
+
+const LoginButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  ${Button} {
+    margin-bottom: 10px;
+  }
+`
 
 const LoginForm = styled.form`
   align-items: center;
