@@ -8,6 +8,7 @@ rm-images() {
 
 rm-containers() {
   local GREP_STRING=$1
-  docker ps -a | grep "${GREP_STRING}" | awk '{print $1}' | xargs docker stop
-  docker ps -a | grep "${GREP_STRING}" | awk '{print $1}' | xargs docker rm
+  OLD_CONTAINER_ID="$(docker ps -a | grep ${GREP_STRING} | awk '{print $1}')"
+  docker stop "${OLD_CONTAINER_ID}" || true
+  docker rm "${OLD_CONTAINER_ID}" || true
 }

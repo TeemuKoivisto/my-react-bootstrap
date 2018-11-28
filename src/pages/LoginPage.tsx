@@ -50,7 +50,7 @@ class LoginPageClass extends React.Component<ILoginPageProps, ILoginPageState> {
   }
   private handleLoginSubmit = async (e: React.FormEvent) : Promise<void> => {
     e.preventDefault()
-    const success = this.injected.logInUser(this.state.loginForm)
+    const success = await this.injected.logInUser(this.state.loginForm)
     if (success) {
       this.props.history.push('')
     }
