@@ -4,26 +4,25 @@ import { inject } from 'mobx-react'
 import { css } from 'styled-components'
 import styled from '../theme/styled'
 
-import { IUser } from '../types/user'
-import { IStores } from '../stores'
+import { Stores } from '../stores'
+import { AuthStore } from '../stores/AuthStore'
 
-interface INavBarInjectedProps {
-  loggedInUser: IUser
-  isAuthenticated: boolean
-  logout: () => void
+interface IProps {
+  className?: string
+  authStore?: AuthStore,
 }
 
-class NavBarClass extends React.Component<{}, {}> {
-  get injected() {
-    return this.props as INavBarInjectedProps
-  }
+@inject((stores: Stores) => ({
+  authStore: stores.authStore,
+}))
+export class NavBar extends React.PureComponent<IProps> {
   handleLogout = (e : React.MouseEvent<HTMLElement>) : void => {
-    this.injected.logout()
+    this.props.authStore!.logout()
   }
   render() {
-    const { isAuthenticated } = this.injected
+    const { isAuthenticated } = this.props.authStore!
     return (
-      <NavContainer>
+      <NavContainer className={this.props.className}>
         <NavLinkList>
           <NavListItem><NavListLink to="/">Front page</NavListLink></NavListItem>
           <NavListItem><NavListLink to="/users">Users page</NavListLink></NavListItem>
@@ -44,18 +43,15 @@ const NavContainer = styled.nav`
   justify-content: space-between;
   margin: 20px;
 `
-
 const NavLinkList = styled.ul`
   display: flex;
 `
-
 const NavListItem = styled.li`
   margin-right: 10px;
   &:last-child {
     margin-right: 0;
   }
 `
-
 const linkStyles = css`
   background-color: ${({ theme }) => theme.color.white };
   border: 1px solid ${({ theme }) => theme.color.secondary };
@@ -71,17 +67,9 @@ const linkStyles = css`
     color: ${({ theme }) => theme.color.white };
   }
 `
-
 const LogoutButton = styled.button`
   ${linkStyles}
 `
-
 const NavListLink = styled(NavLink)`
   ${linkStyles}
 `
-
-export const NavBar = inject((stores: IStores) => ({
-  loggedInUser: stores.authStore.loggedInUser,
-  isAuthenticated: stores.authStore.isAuthenticated,
-  logout: stores.authStore.logout,
-}))(NavBarClass)

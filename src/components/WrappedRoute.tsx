@@ -33,7 +33,6 @@ const MainWrapper = styled.div`
   margin: auto;
   max-width: 980px;
 `
-
 const MainContainer = styled.main`
   margin: 20px;
 `

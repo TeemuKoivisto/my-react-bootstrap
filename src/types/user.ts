@@ -2,7 +2,7 @@ export interface IUser {
   id: number
   name: string
   email: string
-  privileges: Privileges
+  privileges: IPrivileges
 }
 
 export interface ILoginCredentials {
@@ -24,7 +24,7 @@ export interface IUserCreateParams {
   name: string
   email: string
   password: string
-  privileges: Privileges
+  privileges: IPrivileges
 }
 
-export type Privileges = 'ADMIN' | 'USER'
+export type IPrivileges = 'ADMIN' | 'USER'

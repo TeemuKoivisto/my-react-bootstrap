@@ -8,28 +8,18 @@ const EMPTY_USER = {
   email: '',
 } as IUser
 
-export interface IAuthStore {
-  loggedInUser: IUser
-  jwt: IJwt
-  isAuthenticated: boolean
-  logInUser: (credentials: ILoginCredentials) => Promise<boolean>
-  logout: () => void
-}
-
-export class AuthStoreClass implements IAuthStore {
+export class AuthStore {
   @observable loggedInUser: IUser = EMPTY_USER
-  @observable jwt = { expires: -1, token: '' }
+  @observable jwt: IJwt = { expires: -1, token: '' }
 
   @action
   logInUser = async (credentials: ILoginCredentials) => {
     const result = await userApi.login(credentials)
     runInAction(() => {
-      if (result) {
-        this.loggedInUser = result.user
-        this.jwt = result.jwt
-      }
+      this.loggedInUser = result.user
+      this.jwt = result.jwt
     })
-    return result ? true : false
+    return result
   }
 
   @action
@@ -42,5 +32,3 @@ export class AuthStoreClass implements IAuthStore {
     return this.loggedInUser.name !== ''
   }
 }
-
-export const authStore = new AuthStoreClass()

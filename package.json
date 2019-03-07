@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "author": "Teemu Koivisto",
   "dependencies": {
+    "axios": "^0.18.0",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
     "react": "^16.8.4",

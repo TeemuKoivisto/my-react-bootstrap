@@ -2,40 +2,32 @@ import * as React from 'react'
 import { inject } from 'mobx-react'
 import styled from '../theme/styled'
 
-import { RouteComponentProps } from 'react-router'
-
-import { IStores } from '../stores'
-import { ILoginCredentials } from '../types/user'
-
 import { Button } from '../elements/Button'
 
-interface ILoginPageProps extends RouteComponentProps<{}> {
-}
+import { Stores } from '../stores'
+import { AuthStore } from '../stores/AuthStore'
+import { ILoginCredentials } from '../types/user'
+import { RouteComponentProps } from 'react-router'
 
-interface ILoginPageInjectedProps extends ILoginPageProps {
-  isAuthenticated: boolean
-  logInUser: (credentials: ILoginCredentials) => Promise<boolean>
+interface IProps extends RouteComponentProps<{}> {
+  authStore?: AuthStore,
 }
-
-interface ILoginPageState {
+interface IState {
   loginForm: ILoginCredentials
 }
 
-class LoginPageClass extends React.Component<ILoginPageProps, ILoginPageState> {
-  constructor(props: ILoginPageProps) {
-    super(props)
-    this.state = {
-      loginForm: {
-        email: '',
-        password: '',
-      }
+@inject((stores: Stores) => ({
+  authStore: stores.authStore,
+}))
+export class LoginPage extends React.Component<IProps, IState> {
+  state = {
+    loginForm: {
+      email: '',
+      password: '',
     }
   }
-  private get injected() {
-    return this.props as ILoginPageInjectedProps
-  }
   public componentDidMount() {
-    if (this.injected.isAuthenticated) {
+    if (this.props.authStore!.isAuthenticated) {
       this.props.history.push(this.props.location.pathname)
     }
   }
@@ -50,7 +42,7 @@ class LoginPageClass extends React.Component<ILoginPageProps, ILoginPageState> {
   }
   private handleLoginSubmit = async (e: React.FormEvent) : Promise<void> => {
     e.preventDefault()
-    const success = await this.injected.logInUser(this.state.loginForm)
+    const success = await this.props.authStore!.logInUser(this.state.loginForm)
     if (success) {
       this.props.history.push('')
     }
@@ -104,7 +96,6 @@ const LoginButtonsContainer = styled.div`
     margin-bottom: 10px;
   }
 `
-
 const LoginForm = styled.form`
   align-items: center;
   display: flex;
@@ -116,7 +107,6 @@ const LoginForm = styled.form`
     width: 100%;
   }
 `
-
 const LoginField = styled.div`
   display: flex;
   flex-direction: column;
@@ -124,7 +114,6 @@ const LoginField = styled.div`
   max-width: 150px;
   width: 100%;
 `
-
 const LoginInput = styled.input`
   box-sizing: border-box;
   height: 30px;
@@ -132,8 +121,3 @@ const LoginInput = styled.input`
   max-width: 150px;
   width: 100%;
 `
-
-export const LoginPage = inject((stores: IStores) => ({
-  isAuthenticated: stores.authStore.isAuthenticated,
-  logInUser: stores.authStore.logInUser,
-}))(LoginPageClass)

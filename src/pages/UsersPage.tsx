@@ -1,44 +1,42 @@
 import * as React from 'react'
-import { inject } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import styled from '../theme/styled'
 
-import { IStores } from '../stores'
+// import { ErrorOrSpinner } from '../components/ErrorOrSpinner'
+
+import { Stores } from '../stores'
+import { UserStore } from '../stores/UserStore'
 import { IUser } from '../types/user'
 
-import { ErrorOrSpinner } from '../components/ErrorOrSpinner'
-
-// import { Button } from '../elements/Button'
-
-interface IUsersPageInjectedProps {
-  users: IUser[]
-  loading: boolean
-  getUsers: () => void
+interface IProps {
+  userStore?: UserStore,
 }
 
-class UsersPageClass extends React.PureComponent<{}> {
-  private get injected() {
-    return this.props as IUsersPageInjectedProps
-  }
+@inject((stores: Stores) => ({
+  userStore: stores.userStore,
+}))
+@observer
+export class UsersPage extends React.PureComponent<IProps> {
   public componentDidMount() {
-    this.injected.getUsers()
+    this.props.userStore!.getUsers()
   }
   public render() {
-    const { users, loading } = this.injected
+    const { users, loading } = this.props.userStore!
     return (
       <UsersPageContainer>
         <header>
           <h1>Users</h1>
         </header>
-        <ErrorOrSpinner loading={loading}>
-          <UsersList>
-            { users.map((user: IUser, i: number) =>
-            <UsersListItem key={i}>
-              <p>Name: {user.name}</p>
-              <p>Email: {user.email}</p>
-            </UsersListItem>
-            )}
-          </UsersList>
-        </ErrorOrSpinner>
+        { loading ? 'Loading' :
+        <UsersList>
+          { users.map((user: IUser, i: number) =>
+          <UsersListItem key={i}>
+            <p>Name: {user.name}</p>
+            <p>Email: {user.email}</p>
+          </UsersListItem>
+          )}
+        </UsersList>
+        }
       </UsersPageContainer>
     )
   }
@@ -46,11 +44,8 @@ class UsersPageClass extends React.PureComponent<{}> {
 
 const UsersPageContainer = styled.div`
 `
-
 const UsersList = styled.ul`
-
 `
-
 const UsersListItem = styled.li`
   display: flex;
   flex-direction: column;
@@ -59,9 +54,3 @@ const UsersListItem = styled.li`
     margin: 0 10px 0 0;
   }
 `
-
-export const UsersPage = inject((stores: IStores) => ({
-  users: stores.userStore.users,
-  loading: stores.userStore.loading,
-  getUsers: stores.userStore.getUsers,
-}))(UsersPageClass)

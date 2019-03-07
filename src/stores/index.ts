@@ -1,15 +1,12 @@
-import { errorStore, IErrorStore } from './ErrorStore'
-import { authStore, IAuthStore } from './AuthStore'
-import { userStore, IUserStore } from './UserStore'
+import { AuthStore } from './AuthStore'
+import { UserStore } from './UserStore'
 
-export interface IStores {
-  errorStore: IErrorStore,
-  authStore: IAuthStore
-  userStore: IUserStore
-}
+export class Stores {
+  public authStore: AuthStore
+  public userStore: UserStore
 
-export const stores = {
-  errorStore,
-  authStore,
-  userStore,
+  constructor() {
+    this.authStore = new AuthStore()
+    this.userStore = new UserStore()
+  }
 }
