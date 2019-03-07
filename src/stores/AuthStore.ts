@@ -1,7 +1,7 @@
 import { action, computed, runInAction, observable } from 'mobx'
-import * as api from '../api/api'
+import * as userApi from '../api/user.api'
 
-import { IUser, ILoginCredentials, IJwt } from '../interfaces/user'
+import { IUser, ILoginCredentials, IJwt } from '../types/user'
 
 const EMPTY_USER = {
   name: '',
@@ -22,7 +22,7 @@ export class AuthStoreClass implements IAuthStore {
 
   @action
   logInUser = async (credentials: ILoginCredentials) => {
-    const result = await api.logInUser(credentials)
+    const result = await userApi.login(credentials)
     runInAction(() => {
       if (result) {
         this.loggedInUser = result.user

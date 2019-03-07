@@ -4,7 +4,7 @@ import styled from '../theme/styled'
 import { StyledComponentClass } from 'styled-components'
 
 import { IStores } from '../stores'
-import { ITheme } from '../interfaces/theme'
+import { ITheme } from '../types/theme'
 
 import { Spinner } from '../elements/Spinner'
 
@@ -27,7 +27,7 @@ export class ErrorOrSpinnerClass extends React.PureComponent<IErrorOrSpinnerProp
     const { children, loading } = this.props
     const { errorMsg } = this.injected
     const windowHeight = window.innerHeight
-    const topMargin = windowHeight / 2 - 100 + 'px'
+    const topMargin = `${windowHeight / 2 - 100}px`
     if (errorMsg || loading) {
       return (
         <ErrorOrSpinnerContainer marginTop={topMargin}>

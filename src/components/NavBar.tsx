@@ -4,7 +4,7 @@ import { inject } from 'mobx-react'
 import { css } from 'styled-components'
 import styled from '../theme/styled'
 
-import { IUser } from '../interfaces/user'
+import { IUser } from '../types/user'
 import { IStores } from '../stores'
 
 interface INavBarInjectedProps {

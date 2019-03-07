@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "author": "Teemu Koivisto",
   "dependencies": {
-    "mobx": "^5.0.3",
-    "mobx-react": "^5.2.3",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "mobx": "^5.9.0",
+    "mobx-react": "^5.4.3",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts-ts": "2.17.0",
-    "styled-components": "^3.4.2"
+    "react-scripts-ts": "3.1.0",
+    "styled-components": "^4.1.3"
   },
   "scripts": {
     "start": "react-scripts-ts start",
@@ -21,13 +21,14 @@
     "lint:fix": "tslint --fix --project ./ -c tslint.json"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.1",
-    "@types/node": "^10.5.7",
-    "@types/react": "^16.4.8",
-    "@types/react-dom": "^16.0.7",
-    "@types/react-router": "^4.0.30",
-    "@types/react-router-dom": "^4.3.0",
-    "tslint-config-airbnb": "^5.9.2",
-    "typescript": "^3.0.1"
+    "@types/jest": "^24.0.9",
+    "@types/node": "^11.10.5",
+    "@types/react": "^16.8.7",
+    "@types/react-dom": "^16.8.2",
+    "@types/react-router": "^4.4.4",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/styled-components": "4.0.3",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.3.3333"
   }
 }

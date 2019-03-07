@@ -1,7 +1,7 @@
 import { StyledComponentClass } from 'styled-components'
 
 import styled, { keyframes } from '../theme/styled'
-import { ITheme, ThemeSizeTypes } from '../interfaces/theme'
+import { ITheme, ThemeSizeTypes } from '../types/theme'
 
 export interface ISpinnerProps {
   size: ThemeSizeTypes

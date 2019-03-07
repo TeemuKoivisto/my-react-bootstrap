@@ -1,7 +1,7 @@
 import { action, runInAction, observable } from 'mobx'
-import * as api from '../api/api'
+import * as userApi from '../api/user.api'
 
-import { IUser } from '../interfaces/user'
+import { IUser } from '../types/user'
 
 export interface IUserStore {
   users: IUser[]
@@ -16,7 +16,7 @@ export class UserStoreClass implements IUserStore {
   @action
   getUsers = async () => {
     this.loading = true
-    const response = await api.getUsers()
+    const response = await userApi.getUsers()
     runInAction(() => {
       if (response) this.users = response.users
       this.loading = false

@@ -3,7 +3,7 @@ import { inject } from 'mobx-react'
 import styled from '../theme/styled'
 
 import { IStores } from '../stores'
-import { IUser } from '../interfaces/user'
+import { IUser } from '../types/user'
 
 import { ErrorOrSpinner } from '../components/ErrorOrSpinner'
 

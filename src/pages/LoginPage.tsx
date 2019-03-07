@@ -5,7 +5,7 @@ import styled from '../theme/styled'
 import { RouteComponentProps } from 'react-router'
 
 import { IStores } from '../stores'
-import { ILoginCredentials } from '../interfaces/user'
+import { ILoginCredentials } from '../types/user'
 
 import { Button } from '../elements/Button'
 

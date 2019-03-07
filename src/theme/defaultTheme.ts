@@ -1,4 +1,4 @@
-import { ITheme } from '../interfaces/theme'
+import { ITheme } from '../types/theme'
 
 export const defaultTheme : ITheme = {
   color: {
