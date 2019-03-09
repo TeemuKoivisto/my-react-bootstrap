@@ -1,8 +1,10 @@
 import * as React from 'react'
 import { inject } from 'mobx-react'
 import styled from '../theme/styled'
+import { MdEmail, MdLock } from 'react-icons/md'
 
 import { Button } from '../elements/Button'
+import { Input } from '../elements/Input'
 
 import { Stores } from '../stores'
 import { AuthStore } from '../stores/AuthStore'
@@ -12,8 +14,9 @@ import { RouteComponentProps } from 'react-router'
 interface IProps extends RouteComponentProps<{}> {
   authStore?: AuthStore,
 }
-interface IState {
-  loginForm: ILoginCredentials
+interface IState extends ILoginCredentials {
+  email: string
+  password: string
 }
 
 @inject((stores: Stores) => ({
@@ -21,52 +24,36 @@ interface IState {
 }))
 export class LoginPage extends React.Component<IProps, IState> {
   state = {
-    loginForm: {
-      email: '',
-      password: '',
-    }
+    email: '',
+    password: '',
   }
-  public componentDidMount() {
+  componentDidMount() {
     if (this.props.authStore!.isAuthenticated) {
       this.props.history.push(this.props.location.pathname)
     }
   }
-  private handleInputChange = (field: 'email' | 'password') => (e: React.ChangeEvent<HTMLInputElement>) : void => {
-    const { loginForm } = this.state
-    this.setState({
-      loginForm: {
-        ...loginForm,
-        [field]: e.currentTarget.value
-      }
-    })
-  }
-  private handleLoginSubmit = async (e: React.FormEvent) : Promise<void> => {
+  handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const success = await this.props.authStore!.logInUser(this.state.loginForm)
+    const success = await this.props.authStore!.logInUser(this.state)
     if (success) {
       this.props.history.push('')
     }
   }
-  private handleSetDefaultValues = (type: 'admin' | 'user') => (e: React.MouseEvent) : void => {
+  handleSetDefaultValues = (type: 'admin' | 'user') => (e: React.MouseEvent) => {
     if (type === 'admin') {
       this.setState({
-        loginForm: {
-          email: 'admin@asdf.fi',
-          password: 'qwertyui',
-        }
+        email: 'admin@asdf.fi',
+        password: 'qwertyui',
       })
     }
     if (type === 'user') {
       this.setState({
-        loginForm: {
-          email: 'morty@asdf.fi',
-          password: 'asdfasdf',
-        }
+        email: 'morty@asdf.fi',
+        password: 'asdfasdf',
       })
     }
   }
-  public render() {
-    const { loginForm: { email, password } } = this.state
+  render() {
     return (
       <section>
         <LoginButtonsContainer>
@@ -76,11 +63,16 @@ export class LoginPage extends React.Component<IProps, IState> {
         <LoginForm onSubmit={this.handleLoginSubmit}>
           <LoginField>
             <label>Email</label>
-            <LoginInput type="text" value={email} onChange={this.handleInputChange('email')}/>
+            <Input required
+              type="email" icon={<MdEmail size={24}/>} iconPadding="38px" fullWidth
+              value={this.state.email || ''}
+              onChange={val => this.setState({ email: val })}/>
           </LoginField>
           <LoginField>
             <label>Password</label>
-            <LoginInput type="password" value={password} onChange={this.handleInputChange('password')}/>
+            <Input required type="password" icon={<MdLock size={24}/>} iconPadding="38px" fullWidth
+              value={this.state.password || ''}
+              onChange={val => this.setState({ password: val })}/>
           </LoginField>
           <Button type="submit">Submit</Button>
         </LoginForm>
@@ -104,20 +96,14 @@ const LoginForm = styled.form`
   padding: 100px 150px 150px 150px;
   ${Button} {
     margin-top: 20px;
+    max-width: 180px;
     width: 100%;
   }
 `
 const LoginField = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-  max-width: 150px;
-  width: 100%;
-`
-const LoginInput = styled.input`
-  box-sizing: border-box;
-  height: 30px;
-  font-size: ${({ theme }) => theme.fontSize.medium };
-  max-width: 150px;
+  margin-top: 10px;
+  max-width: 180px;
   width: 100%;
 `

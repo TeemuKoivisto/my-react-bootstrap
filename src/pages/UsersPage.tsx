@@ -16,7 +16,7 @@ interface IProps {
   userStore: stores.userStore,
 }))
 @observer
-export class UsersPage extends React.PureComponent<IProps> {
+export class UsersPage extends React.Component<IProps> {
   public componentDidMount() {
     this.props.userStore!.getUsers()
   }
