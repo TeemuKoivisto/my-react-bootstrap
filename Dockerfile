@@ -1,5 +1,5 @@
 # The builder image
-FROM node:8.11.0 as builder
+FROM node:10.15.0-alpine as builder
 
 # Set NODE_ENV to build so that all devDependencies are fetched and tslint won't fail
 ENV NODE_ENV build
@@ -21,7 +21,7 @@ ENV NODE_ENV production
 RUN yarn build
 
 # The production image
-FROM nginx:1.15.0
+FROM nginx:1.15.9-alpine
 
 LABEL maintainer="https://github.com/teemukoivisto"
 
