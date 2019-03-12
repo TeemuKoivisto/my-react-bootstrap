@@ -62,14 +62,14 @@ export class LoginPage extends React.Component<IProps, IState> {
         </LoginButtonsContainer>
         <LoginForm onSubmit={this.handleLoginSubmit}>
           <LoginField>
-            <label>Email</label>
+            <label htmlFor="email">Email</label>
             <Input required
               type="email" icon={<MdEmail size={24}/>} iconPadding="38px" fullWidth
               value={this.state.email || ''}
               onChange={val => this.setState({ email: val })}/>
           </LoginField>
           <LoginField>
-            <label>Password</label>
+            <label htmlFor="password">Password</label>
             <Input required type="password" icon={<MdLock size={24}/>} iconPadding="38px" fullWidth
               value={this.state.password || ''}
               onChange={val => this.setState({ password: val })}/>
@@ -97,13 +97,12 @@ const LoginForm = styled.form`
   ${Button} {
     margin-top: 20px;
     max-width: 180px;
-    width: 100%;
+    width: 180px;
   }
 `
 const LoginField = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 10px;
-  max-width: 180px;
-  width: 100%;
+  width: 180px;
 `
