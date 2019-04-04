@@ -44,7 +44,7 @@ const InputContainer = styled.div`
   border-radius: 4px;
   display: flex;
   position: relative;
-  width: ${({ fullWidth } : IWrapperProps) => fullWidth ? '100%' : '150px' };
+  width: ${({ fullWidth } : IWrapperProps) => fullWidth ? '100%' : '180px' };
   &:focus {
     background-image: linear-gradient(to right, #cefff8, #729EE74D);
     color: ${({ theme }) => theme.color.textDark };
@@ -60,7 +60,7 @@ const StyledInput = styled.input`
   border: 0;
   border-radius: 4px;
   color: ${({ theme }) => theme.color.textDark };
-  font-size: ${({ theme }) => theme.fontSize.medium };
+  font-size: ${({ theme }) => theme.fontSize.small };
   padding: 0.5rem 0.5rem;
   padding-left: ${({ iconPadding } : IProps) => iconPadding || ''};
   text-decoration: none;

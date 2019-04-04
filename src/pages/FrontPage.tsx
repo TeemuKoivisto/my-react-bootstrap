@@ -15,7 +15,7 @@ interface IProps {
   authStore: stores.authStore,
 }))
 export class FrontPage extends React.PureComponent<IProps> {
-  public render() {
+  render() {
     const { loggedInUser } = this.props.authStore!
     return (
       <FrontPageContainer>

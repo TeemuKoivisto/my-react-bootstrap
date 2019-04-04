@@ -96,13 +96,13 @@ const LoginForm = styled.form`
   padding: 100px 150px 150px 150px;
   ${Button} {
     margin-top: 20px;
-    max-width: 180px;
-    width: 180px;
+    max-width: 240px;
+    width: 240px;
   }
 `
 const LoginField = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 10px;
-  width: 180px;
+  width: 240px;
 `

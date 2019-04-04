@@ -17,10 +17,10 @@ interface IProps {
 }))
 @observer
 export class UsersPage extends React.Component<IProps> {
-  public componentDidMount() {
+  componentDidMount() {
     this.props.userStore!.getUsers()
   }
-  public render() {
+  render() {
     const { users, loading } = this.props.userStore!
     return (
       <UsersPageContainer>
