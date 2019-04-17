@@ -1,6 +1,6 @@
 # My React Bootstrap
 
-Generated (latest 9.8.2018) with React + Typescript using react-scripts-ts: `create-react-app my-app --scripts-version=react-scripts-ts`.
+Generated (latest 17.4.2019) with React + Typescript using CRA: `create-react-app my-app --typescript`.
 
 ## Requirements
 
