@@ -5,7 +5,7 @@ import styled from '../theme/styled'
 import { NavBar } from './NavBar'
 
 interface IWrappedRoute extends RouteProps {
-  component: React.ComponentClass
+  component: React.ComponentClass<any>
 }
 
 const renderNoMainContainerWrapper = (Component: React.ComponentClass) => (props: RouteProps) =>
