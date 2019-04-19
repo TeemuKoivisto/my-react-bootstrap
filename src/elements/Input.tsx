@@ -19,7 +19,7 @@ interface IWrapperProps {
 
 class InputClass extends React.PureComponent<IProps> {
 
-  public static defaultProps: Pick<IProps, 'disabled' | 'type' | 'required'> = {
+  static defaultProps: Pick<IProps, 'disabled' | 'type' | 'required'> = {
     disabled: false,
     type: 'text',
     required: false

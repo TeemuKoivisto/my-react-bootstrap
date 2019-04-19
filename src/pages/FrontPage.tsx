@@ -18,7 +18,7 @@ export class FrontPage extends React.PureComponent<IProps> {
   render() {
     const { loggedInUser } = this.props.authStore!
     return (
-      <FrontPageContainer>
+      <Container>
         <header>
           <h1>Hi there!</h1>
         </header>
@@ -33,10 +33,10 @@ export class FrontPage extends React.PureComponent<IProps> {
           <p>Privileges: {loggedInUser.privileges}</p>
         </div>
         }
-      </FrontPageContainer>
+      </Container>
     )
   }
 }
 
-const FrontPageContainer = styled.div`
+const Container = styled.div`
 `

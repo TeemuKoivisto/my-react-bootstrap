@@ -6,7 +6,9 @@
     "semicolon": [true, "never"],
     "trailing-comma": false,
     "variable-name": [true, "check-format", "allow-pascal-case", "allow-leading-underscore"],
-    "function-name": false
+    "function-name": false,
+    "import-name": false,
+    "quotemark": [true, "single", "backtick", "jsx-double"]
   },
   "env": {
     "jest": true

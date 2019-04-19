@@ -16,7 +16,7 @@ interface IProps {
   authStore: stores.authStore,
 }))
 export class NavBar extends React.PureComponent<IProps> {
-  handleLogout = (e : React.MouseEvent<HTMLElement>) : void => {
+  handleLogout = (e : React.MouseEvent<HTMLElement>) => {
     this.props.authStore!.logout()
   }
   render() {

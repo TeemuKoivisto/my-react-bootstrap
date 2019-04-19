@@ -23,7 +23,7 @@ export class UsersPage extends React.Component<IProps> {
   render() {
     const { users, loading } = this.props.userStore!
     return (
-      <UsersPageContainer>
+      <Container>
         <header>
           <h1>Users</h1>
         </header>
@@ -37,12 +37,12 @@ export class UsersPage extends React.Component<IProps> {
           )}
         </UsersList>
         }
-      </UsersPageContainer>
+      </Container>
     )
   }
 }
 
-const UsersPageContainer = styled.div`
+const Container = styled.div`
 `
 const UsersList = styled.ul`
 `
