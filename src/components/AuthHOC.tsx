@@ -13,7 +13,7 @@ interface IProps {
 /**
  * Well it looked cool when I first made this...
  * Now I think it's a piece of shit. Opinions change. Too complicated & doesn't work => wasted hours.
- * @param WrappedComponent - Should be React.ComponentType<P> but I have for this type-masturbation
+ * @param WrappedComponent - Should be React.ComponentType<P> but I don't have time for this type-masturbation
  */
 export function AuthHOC <P extends IProps>(WrappedComponent: React.ComponentType<any>) {
   class AuthHOCClass extends React.Component<IProps & RouteComponentProps<any>, {}> {

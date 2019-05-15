@@ -39,7 +39,7 @@ export class LoginPage extends React.Component<IProps, IState> {
       this.props.history.push('')
     }
   }
-  handleSetDefaultValues = (type: 'admin' | 'user') => (e: React.MouseEvent) => {
+  handleSetDefaultValues = (type: 'admin' | 'user') => () => {
     if (type === 'admin') {
       this.setState({
         email: 'admin@asdf.fi',

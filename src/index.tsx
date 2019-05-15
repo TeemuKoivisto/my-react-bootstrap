@@ -7,10 +7,9 @@ import { Stores } from './stores'
 import { confMobx } from './stores/mobxConf'
 
 import { defaultTheme } from './theme/defaultTheme'
+import { GlobalStyle } from './theme/GlobalStyle'
 
 import { Routes } from './routes'
-
-import './index.css'
 
 confMobx()
 
@@ -19,7 +18,10 @@ export const stores = new Stores()
 render(
   <Provider {...stores}>
     <ThemeProvider theme={defaultTheme}>
-      <Routes />
+      <>
+        <Routes />
+        <GlobalStyle />
+      </>
     </ThemeProvider>
   </Provider>,
   document.getElementById('root') as HTMLElement

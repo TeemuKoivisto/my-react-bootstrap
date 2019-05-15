@@ -7,7 +7,9 @@ import styled from '../theme/styled'
 import { Stores } from '../stores'
 import { AuthStore } from '../stores/AuthStore'
 
-interface IProps {
+import { RouteComponentProps } from 'react-router'
+
+interface IProps extends RouteComponentProps<{}> {
   className?: string
   authStore?: AuthStore,
 }
@@ -18,6 +20,7 @@ interface IProps {
 export class NavBar extends React.PureComponent<IProps> {
   handleLogout = (e : React.MouseEvent<HTMLElement>) => {
     this.props.authStore!.logout()
+    this.props.history.push('')
   }
   render() {
     const { isAuthenticated } = this.props.authStore!
@@ -54,7 +57,7 @@ const NavListItem = styled.li`
 `
 const linkStyles = css`
   background-color: ${({ theme }) => theme.color.white };
-  border: 1px solid ${({ theme }) => theme.color.secondary };
+  border: 1px solid ${({ theme }) => theme.color.textDark };
   box-sizing: border-box;
   color: ${({ theme }) => theme.color.textDark };
   cursor: pointer;
@@ -63,9 +66,10 @@ const linkStyles = css`
   padding: 20px 10px 20px 10px;
   text-decoration: none;
   &:hover {
-    background-color: ${({ theme }) => theme.color.primary};
+    background-color: ${({ theme }) => theme.color.primary };
     color: ${({ theme }) => theme.color.white };
   }
+  transition: 0.2s all;
 `
 const LogoutButton = styled.button`
   ${linkStyles}

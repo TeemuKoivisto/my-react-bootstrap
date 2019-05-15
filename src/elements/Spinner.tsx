@@ -21,8 +21,8 @@ export const Spinner: StyledComponentClass<ISpinnerProps, ITheme> = styled<ISpin
   border: ${({ theme, color }) => `solid ${color ? theme.color[color] : theme.color.textDark}`};
   border-right-color: transparent;
   border-radius: 50%;
-  border-width: ${({ theme, size }) => theme.spinner.sizes[size].borderWidth};
-  height: ${({ theme, size }) => theme.spinner.sizes[size].height};
-  margin: ${({ theme, size }) => theme.spinner.sizes[size].margin};
-  width: ${({ theme, size }) => theme.spinner.sizes[size].width};
+  border-width: ${({ theme, size }) => theme.spinner[size].borderWidth};
+  height: ${({ theme, size }) => theme.spinner[size].height};
+  margin: ${({ theme, size }) => theme.spinner[size].margin};
+  width: ${({ theme, size }) => theme.spinner[size].width};
 `

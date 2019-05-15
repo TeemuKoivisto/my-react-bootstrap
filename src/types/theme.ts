@@ -1,10 +1,14 @@
 export interface IThemeColor {
+  gray: string
+  grayLight: string
   textLight: string
   textDark: string
   bg: string
   white: string
   primary: string
   secondary: string
+  red: string
+  yellow: string
 }
 
 export interface ISize {
@@ -26,11 +30,10 @@ export interface IThemeSizes {
 
 export interface ITheme {
   color: IThemeColor
-  button: {
-    sizes: IThemeSizes
-  }
-  spinner: {
-    sizes: IThemeSizes
+  button: IThemeSizes
+  spinner: IThemeSizes
+  font: {
+    text: string
   }
   fontSize: {
     small: string
@@ -38,5 +41,8 @@ export interface ITheme {
     medium: string
     xlarge: string
     largeIcon: string
+  }
+  transitions: {
+    bezier: string
   }
 }

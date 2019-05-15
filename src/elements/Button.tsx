@@ -1,20 +1,41 @@
-// import * as React from 'react'
+import * as React from 'react'
 import styled from '../theme/styled'
 
-export const Button = styled.button`
-  background-color: ${({ theme }) => theme.color.white };
-  border: 1px solid ${({ theme }) => theme.color.secondary };
-  border-radius: 5px;
-  color: ${({ theme }) => theme.color.primary };
+interface IProps {
+  children: React.ReactNode
+  className?: string
+  type?: string
+  disabled?: boolean
+  onClick?: () => void
+}
+
+ButtonEl.defaultProps = {
+  type: 'button',
+  disabled: false,
+}
+
+function ButtonEl(props: IProps) {
+  function onClick(e: React.MouseEvent) {
+    return !props.disabled && props.onClick && props.onClick()
+  }
+  const { className, children } = props
+  return (
+    <button className={className} onClick={onClick}>{children}</button>
+  )
+}
+
+export const Button = styled(ButtonEl)`
+  background-color: ${({ theme }) => theme.color.secondary };
+  border: 1px solid ${({ theme }) => theme.color.textDark };
+  border-radius: 4px;
+  color: ${({ theme }) => theme.color.textDark };
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSize.small };
-  max-width: 150px;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 20px 10px 20px;
   text-decoration: none;
+  width: 150px;
   &:hover {
-    background-color: ${({ theme }) => theme.color.primary};
-    box-shadow: 2px 2px #039be569;
-    color: ${({ theme }) => theme.color.white };
+    box-shadow: 3px 3px #039be569;
   }
-  transition: 0.1s all;
+  transition: 0.2s all;
 `
