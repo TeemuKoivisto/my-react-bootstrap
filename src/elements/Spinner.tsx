@@ -1,7 +1,5 @@
-import { StyledComponentClass } from 'styled-components'
-
 import styled, { keyframes } from '../theme/styled'
-import { ITheme, ThemeSizeTypes } from '../types/theme'
+import { ThemeSizeTypes } from '../types/theme'
 
 export interface ISpinnerProps {
   size: ThemeSizeTypes
@@ -16,7 +14,7 @@ const animationRotate = keyframes`
   }
 `
 
-export const Spinner: StyledComponentClass<ISpinnerProps, ITheme> = styled<ISpinnerProps, 'div'>('div')`
+export const Spinner = styled.div<ISpinnerProps>`
   animation: ${ animationRotate } 0.8s infinite linear;
   border: ${({ theme, color }) => `solid ${color ? theme.color[color] : theme.color.textDark}`};
   border-right-color: transparent;
