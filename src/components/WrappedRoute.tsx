@@ -3,6 +3,7 @@ import { Route, RouteProps, RouteComponentProps } from 'react-router'
 import styled from '../theme/styled'
 
 import { NavBar } from './NavBar'
+import { Toaster } from './Toaster'
 
 interface IWrappedRoute extends RouteProps {
   component: React.ComponentClass<any>
@@ -11,12 +12,14 @@ interface IWrappedRoute extends RouteProps {
 const renderNoMainContainerWrapper = (Component: React.ComponentClass) => (props: RouteComponentProps<any>) =>
   <MainWrapper>
     <NavBar {...props}/>
+    <Toaster />
     <Component {...props}/>
   </MainWrapper>
 
 const renderWrapper = (Component: React.ComponentClass) => (props: RouteComponentProps<any>) =>
   <MainWrapper>
     <NavBar {...props}/>
+    <Toaster />
     <MainContainer>
       <Component {...props}/>
     </MainContainer>

@@ -134,6 +134,7 @@ const Option = styled.li<OptionProps>`
   }
 `
 // export const Dropdown = DropdownEl
+// TODO fix this, using this component in SC does not work eg ${Dropdown}
 export const Dropdown: new <T>() => React.Component<T> = styled(DropdownEl)`
   background: transparent;
   border: 0;

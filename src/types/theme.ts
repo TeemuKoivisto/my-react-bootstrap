@@ -1,6 +1,9 @@
 export interface IThemeColor {
   gray: string
   grayLight: string
+  green: string
+  orange: string
+  blue: string
   textLight: string
   textDark: string
   bg: string
