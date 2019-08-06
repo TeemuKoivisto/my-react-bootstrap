@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from '../theme/styled'
 import { FiChevronDown } from 'react-icons/fi'
 
 import useClickOutside from '../hooks/useClickOutside'
@@ -105,7 +105,7 @@ const DropdownList = styled.ul<DropdownProps>`
   border-color: #b5b5b5;
   border-style: solid;
   box-shadow: 1px 1px #b5b5b570;
-  color: ${({ theme }) => theme.textColor };
+  color: ${({ theme }) => theme.color.textDark };
   display: ${({ open }) => open ? 'block' : 'none'};
   list-style: none;
   margin: 0;
