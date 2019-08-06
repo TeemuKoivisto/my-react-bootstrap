@@ -82,9 +82,11 @@ const SvgWrapper = styled.span`
 const Button = styled.button`
   align-items: center;
   background: transparent;
-  border: 1px solid #e5e5e5;
+  border: 1px solid ${({ theme }) => theme.color.textDark };
   border-radius: 26px;
+  cursor: pointer;
   display: flex;
+  font-size: 16px;
   justify-content: center;
   padding: 8px 12px 8px 16px;
   position: relative;
@@ -110,7 +112,7 @@ const DropdownList = styled.ul<DropdownProps>`
   padding: 0;
   position: absolute;
   right: 0;
-  width: 100px;
+  width: 100%;
   z-index: 10;
   transform: scale(1, 1) translateZ(0px);
   transition: opacity 284ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 189ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;

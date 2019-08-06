@@ -9,42 +9,56 @@ interface IProps {
   iconPadding?: string
   fullWidth?: boolean
   disabled?: boolean
-  placeHolder?: string
+  placeholder?: string
   required?: boolean
   onChange: (value: any) => void // Basically one of: string | number | file
 }
-interface IWrapperProps {
-  fullWidth?: boolean
+
+InputEl.defaultProps = {
+  required: false,
+  type: 'text',
+  disabled: false,
 }
 
-class InputClass extends React.PureComponent<IProps> {
-
-  static defaultProps: Pick<IProps, 'disabled' | 'type' | 'required'> = {
-    disabled: false,
-    type: 'text',
-    required: false
+function InputEl(props: IProps) {
+  function onChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    !disabled && props.onChange!(event.target.value)
   }
-  onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    !this.props.disabled && this.props.onChange!(event.target.value)
-  }
-  render() {
-    const { icon } = this.props
-    return (
-      <InputContainer fullWidth={this.props.fullWidth}>
-        { icon }
-        <StyledInput {...this.props} onChange={this.onChange}/>
-      </InputContainer>
-    )
-  }
+  const { className, value, type, icon, iconPadding, placeholder, disabled, required, fullWidth } = props
+  return (
+    <Container className={className} fullWidth={fullWidth}>
+      { icon }
+      { type === 'textarea' ?
+        <StyledTextarea
+          value={value}
+          placeholder={placeholder}
+          disabled={disabled}
+          required={required}
+          onChange={onChange}
+        />
+        :
+      <StyledInput
+        value={value}
+        type={type}
+        iconPadding={iconPadding}
+        placeholder={placeholder}
+        disabled={disabled}
+        required={required}
+        onChange={onChange}
+      />
+      }
+    </Container>
+  )
 }
 
-const InputContainer = styled.div`
+type ContainerProps = { fullWidth?: boolean }
+const Container = styled.div<ContainerProps>`
   align-items: center;
   border: 1px solid ${({ theme }) => theme.color.textDark };
   border-radius: 4px;
   display: flex;
   position: relative;
-  width: ${({ fullWidth } : IWrapperProps) => fullWidth ? '100%' : '180px' };
+  width: ${({ fullWidth }) => fullWidth ? '100%' : '180px' };
   &:focus {
     background-image: linear-gradient(to right, #cefff8, #729EE74D);
     color: ${({ theme }) => theme.color.textDark };
@@ -55,14 +69,23 @@ const InputContainer = styled.div`
     position: absolute;
   }
 `
-const StyledInput = styled.input`
+const StyledTextarea = styled.textarea`
+  border: 0;
+  border-radius: 4px;
+  font-size: ${({ theme }) => theme.fontSize.small };
+  height: 100%;
+  min-height: 100px;
+  padding: 0.5rem;
+  width: 100%;
+`
+const StyledInput = styled.input<IProps>`
   background-color: ${({ theme }) => theme.color.white };
   border: 0;
   border-radius: 4px;
   color: ${({ theme }) => theme.color.textDark };
   font-size: ${({ theme }) => theme.fontSize.small };
   padding: 0.5rem 0.5rem;
-  padding-left: ${({ iconPadding } : IProps) => iconPadding || ''};
+  padding-left: ${({ iconPadding }) => iconPadding || ''};
   text-decoration: none;
   transition: 0.1s all;
   width: 100%;
@@ -71,4 +94,4 @@ const StyledInput = styled.input`
     color: ${({ theme }) => theme.color.textDark };
   }
 `
-export const Input = styled(InputClass)``
+export const Input = styled(InputEl)``

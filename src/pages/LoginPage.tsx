@@ -63,7 +63,7 @@ export class LoginPage extends React.Component<IProps, IState> {
         <LoginForm onSubmit={this.handleLoginSubmit}>
           <LoginField>
             <label htmlFor="email">Email</label>
-            <Input required
+            <Input required placeholder={'Email'}
               type="email" icon={<MdEmail size={24}/>} iconPadding="38px" fullWidth
               value={this.state.email || ''}
               onChange={val => this.setState({ email: val })}/>
