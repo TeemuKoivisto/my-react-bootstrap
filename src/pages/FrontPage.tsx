@@ -3,6 +3,7 @@ import { inject } from 'mobx-react'
 import styled from '../theme/styled'
 
 // import { Button } from '../elements/Button'
+import { ShowcaseComponents } from '../components/ShowcaseComponents'
 
 import { Stores } from '../stores'
 import { AuthStore } from '../stores/AuthStore'
@@ -25,6 +26,7 @@ export class FrontPage extends React.PureComponent<IProps> {
         <p>
           This is my example React bootstrap.
         </p>
+        <ShowcaseComponents />
         { !loggedInUser.name ?
         <p>You are not logged in.</p> :
         <div>
