@@ -85,7 +85,7 @@ const Button = styled.button`
   border-radius: 26px;
   cursor: pointer;
   display: flex;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSize.medium};
   justify-content: center;
   padding: 0.5rem 0.75rem 0.5rem 1rem;
   position: relative;

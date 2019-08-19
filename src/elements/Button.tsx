@@ -52,7 +52,7 @@ export const Button = styled(ButtonEl)<IProps>`
   color: ${({ theme }) => theme.color.textDark };
   cursor: pointer;
   display: flex;
-  font-size: ${({ theme }) => theme.fontSize.small };
+  font-size: ${({ theme }) => theme.fontSize.medium };
   justify-content: center;
   min-width: 100px;
   padding: 0.5rem 1.5rem;

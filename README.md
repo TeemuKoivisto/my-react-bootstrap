@@ -26,6 +26,7 @@ There's a set of utility functions for helping to manage the images that you can
 
 ## TODO
 
+* Fix Toaster. Not closing them after timeout expires (progress bar finishes) as it should.
 * Make dropdown list items buttons for triggering onClick-event with enter. BUT remember that there's some stupid bug with outlines that causes them to overlap when buttons are next to each other with `position: absolute` in the parent element.
 * Fix Dropdown generics.
 * Use focus trap with eg modals, maybe. I don't know. Is aria-compatibility that big of a deal?

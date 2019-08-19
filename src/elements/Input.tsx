@@ -86,7 +86,7 @@ const Container = styled.div<ContainerProps>`
 const StyledTextarea = styled.textarea`
   border: 0;
   border-radius: 4px;
-  font-size: ${({ theme }) => theme.fontSize.small };
+  font-size: ${({ theme }) => theme.fontSize.medium };
   height: 100%;
   min-height: 100px;
   padding: 0.5rem;
@@ -97,7 +97,7 @@ const StyledInput = styled.input<IProps>`
   border: 0;
   border-radius: 4px;
   color: ${({ theme }) => theme.color.textDark };
-  font-size: ${({ theme }) => theme.fontSize.small };
+  font-size: ${({ theme }) => theme.fontSize.medium };
   padding: 0.5rem 0.5rem;
   padding-left: ${({ iconPadding }) => iconPadding || ''};
   text-decoration: none;

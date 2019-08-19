@@ -46,7 +46,7 @@ const Link = styled(NavLink)`
   box-sizing: border-box;
   color: ${({ theme }) => theme.color.textDark };
   cursor: pointer;
-  font-size: ${({ theme }) => theme.fontSize.small };
+  font-size: ${({ theme }) => theme.fontSize.medium };
   padding: 1rem;
   text-decoration: none;
   &:hover {

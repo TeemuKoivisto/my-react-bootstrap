@@ -133,7 +133,7 @@ const ToastBody = styled.div<ToastBodyProps>`
   }
   .message {
     color: ${({ type, theme }) => getTypeColor(type, theme)};
-    font-size: 16px;
+    font-size: ${({ theme }) => theme.fontSize.medium};
     font-style: bold;
     margin: 10px 0 10px 0;
   }
