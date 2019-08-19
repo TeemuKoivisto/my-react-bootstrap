@@ -27,7 +27,7 @@ export function ExampleModal(props: IProps) {
       body={
         <ModalContainer ref={ref}>
           <SvgAction className="close-icon" onClick={() => handleClose()}><FiX size={24}/></SvgAction>
-          <SvgWrapper><img src={'/img/grumpy-cat.jpg'} /></SvgWrapper>
+          <SvgWrapper><img src={'/img/grumpy-cat.jpg'} alt="Grumpy cat"/></SvgWrapper>
           <h2>I am a modal</h2>
           <Button onClick={doStuff}>I am a button</Button>
         </ModalContainer>

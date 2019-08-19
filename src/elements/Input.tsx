@@ -12,6 +12,8 @@ interface IProps {
   placeholder?: string
   required?: boolean
   onChange: (value: any) => void // Basically one of: string | number | file
+  onFocus?: () => void
+  onBlur?: () => void
 }
 
 InputEl.defaultProps = {
@@ -21,10 +23,18 @@ InputEl.defaultProps = {
 }
 
 function InputEl(props: IProps) {
-  function onChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     !disabled && props.onChange!(event.target.value)
   }
-  const { className, value, type, icon, iconPadding, placeholder, disabled, required, fullWidth } = props
+  // function handleFocus() {
+  //   props.onFocus!()
+  // }
+  // function handleBlur() {
+  //   props.onBlur!()
+  // }
+  const {
+    className, value, type, icon, iconPadding, placeholder, disabled, required, fullWidth, onFocus, onBlur
+  } = props
   return (
     <Container className={className} fullWidth={fullWidth}>
       { icon }
@@ -34,7 +44,9 @@ function InputEl(props: IProps) {
           placeholder={placeholder}
           disabled={disabled}
           required={required}
-          onChange={onChange}
+          onChange={handleChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
         />
         :
       <StyledInput
@@ -44,7 +56,9 @@ function InputEl(props: IProps) {
         placeholder={placeholder}
         disabled={disabled}
         required={required}
-        onChange={onChange}
+        onChange={handleChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
       />
       }
     </Container>

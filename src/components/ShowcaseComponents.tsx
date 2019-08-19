@@ -51,6 +51,8 @@ export const ShowcaseComponents = inject('toastStore')(function ShowcaseComponen
           onChange={handleTextChange}
         />
         <Button onClick={handleModalOpen}>Open modal</Button>
+        <br/>
+        <Button loading>Loading</Button>
       </Container>
     </>
   )

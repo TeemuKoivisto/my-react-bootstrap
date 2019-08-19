@@ -14,27 +14,8 @@ export interface IThemeColor {
   yellow: string
 }
 
-export interface ISize {
-  borderWidth?: string
-  fontSize?: string
-  height?: string
-  margin?: string
-  padding?: string
-  width?: string
-}
-
-export type ThemeSizeTypes = 'small' | 'medium' | 'large'
-
-export interface IThemeSizes {
-  small: ISize
-  medium: ISize
-  large: ISize
-}
-
 export interface ITheme {
   color: IThemeColor
-  button: IThemeSizes
-  spinner: IThemeSizes
   font: {
     text: string
   }

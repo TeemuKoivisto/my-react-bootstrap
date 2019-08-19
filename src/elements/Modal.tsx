@@ -10,7 +10,7 @@ interface IProps {
 function ModalEl(props: IProps) {
   const { className, isOpen, body } = props
   return (
-    <div className={`${className} ${!isOpen && 'hidden'}`}>
+    <div className={`${className} ${!isOpen && 'hidden'}`} role="dialog" aria-modal aria-hidden={!isOpen}>
       { body }
     </div>
   )

@@ -7,7 +7,7 @@ function useTimeout(callback: () => void, delay: number) {
       return () => clearTimeout(id)
     }
     return () => undefined
-  }, [delay])
+  }, [callback, delay])
 }
 
 export default useTimeout

@@ -85,6 +85,7 @@ const SvgAction = styled.button`
   background: transparent;
   border: 0;
   border-radius: 50%;
+  cursor: pointer;
   display: flex;
   padding: 8px;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;

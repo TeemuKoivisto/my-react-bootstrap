@@ -25,7 +25,7 @@ DropdownEl.defaultProps = {
   placeholder: 'Choose',
 }
 
-function DropdownEl<T extends OptionValue>(props: IProps<T>): React.ReactElement<IProps<T>> {
+function DropdownEl<T extends OptionValue>(props: IProps<T>) {
   const { className, selected, options, placeholder } = props
 
   function closeMenu() {
@@ -59,14 +59,13 @@ function DropdownEl<T extends OptionValue>(props: IProps<T>): React.ReactElement
         {getButtonText()} 
         <SvgWrapper><FiChevronDown size={18}/></SvgWrapper>
       </Button>
-      <DropdownList open={menuOpen} role="menu">
+      <DropdownList open={menuOpen}>
       { options.map(o =>
         <Option
           key={o.key}
           tabIndex={0}
           selected={isSelected(o)}
           onClick={selectOption(o)}
-          role="menuitem"
         >
           {o.value}
         </Option>
@@ -101,9 +100,10 @@ const Button = styled.button`
 type DropdownProps = { open: boolean }
 const DropdownList = styled.ul<DropdownProps>`
   background-color: #fff;
-  border-width: 1px;
   border-color: #b5b5b5;
+  border-radius: .15rem;
   border-style: solid;
+  border-width: 1px;
   box-shadow: 1px 1px #b5b5b570;
   color: ${({ theme }) => theme.color.textDark };
   display: ${({ open }) => open ? 'block' : 'none'};
@@ -125,8 +125,9 @@ const Option = styled.li<OptionProps>`
   display: flex;
   background-color: ${({ selected }) => selected ? 'rgba(0, 0, 0, 0.08)' : '#fff'};
   border-bottom: 1px solid #e5e5e5;
+  border-radius: .15rem;
   cursor: pointer;
-  padding: 10px 12px;
+  padding: .66rem 1rem;
   transition: all 0.1s cubic-bezier(0.55, 0.085, 0.68, 0.53);
   z-index: 10;
   &:hover {

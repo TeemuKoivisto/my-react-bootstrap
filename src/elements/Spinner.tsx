@@ -1,9 +1,47 @@
+import React from 'react'
 import styled, { keyframes } from '../theme/styled'
-import { ThemeSizeTypes } from '../types/theme'
 
-export interface ISpinnerProps {
-  size: ThemeSizeTypes
+interface IProps {
+  size: 's' | 'm' | 'l'
   color?: string
+}
+
+Spinner.defaultProps = {
+  size: 'm'
+}
+
+export function Spinner(props: IProps) {
+  const { size, color } = props
+  return (
+    <StyledSpinner
+      size={size}
+      color={color}
+    />
+  )
+}
+
+function getSize(size: 's' | 'm' | 'l') {
+  switch(size) {
+    case 's':
+      return {
+        borderWidth: '2px',
+        height: '14px',
+        width: '14px',
+      }
+    case 'l':
+      return {
+        borderWidth: '3px',
+        height: '20px',
+        width: '20px',
+      }
+    case 'm':
+    default:
+      return {
+        borderWidth: '3px',
+        height: '16px',
+        width: '16px',
+      }
+  }
 }
 
 const animationRotate = keyframes`
@@ -13,14 +51,12 @@ const animationRotate = keyframes`
     transform: rotate(360deg);
   }
 `
-
-export const Spinner = styled.div<ISpinnerProps>`
+const StyledSpinner = styled.div<IProps>`
   animation: ${ animationRotate } 0.8s infinite linear;
   border: ${({ theme, color }) => `solid ${color ? theme.color[color] : theme.color.textDark}`};
   border-right-color: transparent;
   border-radius: 50%;
-  border-width: ${({ theme, size }) => theme.spinner[size].borderWidth};
-  height: ${({ theme, size }) => theme.spinner[size].height};
-  margin: ${({ theme, size }) => theme.spinner[size].margin};
-  width: ${({ theme, size }) => theme.spinner[size].width};
+  border-width: ${({ size }) => getSize(size).borderWidth};
+  height: ${({ size }) =>  getSize(size).height};
+  width: ${({ size }) =>  getSize(size).width};
 `

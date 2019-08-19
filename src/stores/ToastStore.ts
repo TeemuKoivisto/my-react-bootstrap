@@ -7,13 +7,13 @@ export class ToastStore {
   idCounter: number = 0
 
   @action createToast = (message: string, type: string = 'success', duration: number = 5000) => {
-    this.idCounter += 1
     const newToast = {
       id: this.idCounter,
       message,
       type,
       duration
     }
+    this.idCounter += 1
     this.toasts.push(newToast)
   }
  
