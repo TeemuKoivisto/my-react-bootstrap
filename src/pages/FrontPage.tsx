@@ -1,8 +1,7 @@
-import * as React from 'react'
+import React from 'react'
 import { inject } from 'mobx-react'
 import styled from '../theme/styled'
 
-// import { Button } from '../elements/Button'
 import { ShowcaseComponents } from '../components/ShowcaseComponents'
 
 import { Stores } from '../stores'
@@ -26,15 +25,15 @@ export class FrontPage extends React.PureComponent<IProps> {
         <p>
           This is my example React bootstrap.
         </p>
-        <ShowcaseComponents />
         { !loggedInUser.name ?
-        <p>You are not logged in.</p> :
+        <p><u>You are not logged in.</u></p> :
         <div>
-          <p>Name: {loggedInUser.name}</p>
-          <p>Email: {loggedInUser.email}</p>
-          <p>Privileges: {loggedInUser.privileges}</p>
+          <p><u>Name</u>: {loggedInUser.name}</p>
+          <p><u>Email</u>: {loggedInUser.email}</p>
+          <p><u>Privileges</u>: {loggedInUser.privileges}</p>
         </div>
         }
+        <ShowcaseComponents />
       </Container>
     )
   }

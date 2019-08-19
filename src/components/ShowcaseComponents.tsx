@@ -59,6 +59,7 @@ export const ShowcaseComponents = inject('toastStore')(function ShowcaseComponen
 })
 
 const Container = styled.div`
+  height: 800px;
   & > ${Input} {
     margin-bottom: 15px;
     margin-top: 15px;

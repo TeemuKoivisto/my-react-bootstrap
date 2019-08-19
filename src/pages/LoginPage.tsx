@@ -56,10 +56,10 @@ export class LoginPage extends React.Component<IProps, IState> {
   render() {
     return (
       <section>
-        <LoginButtonsContainer>
+        <ShortcutButtonsContainer>
           <Button onClick={this.handleSetDefaultValues('admin')}>Admin login</Button>
           <Button onClick={this.handleSetDefaultValues('user')}>User login</Button>
-        </LoginButtonsContainer>
+        </ShortcutButtonsContainer>
         <LoginForm onSubmit={this.handleLoginSubmit}>
           <LoginField>
             <label htmlFor="email">Email</label>
@@ -81,11 +81,10 @@ export class LoginPage extends React.Component<IProps, IState> {
   }
 }
 
-const LoginButtonsContainer = styled.div`
+const ShortcutButtonsContainer = styled.div`
   display: flex;
-  flex-direction: column;
   ${Button} {
-    margin-bottom: 10px;
+    margin-right: 1rem;
   }
 `
 const LoginForm = styled.form`

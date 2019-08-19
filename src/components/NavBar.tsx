@@ -1,10 +1,9 @@
-import * as React from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { inject } from 'mobx-react'
-import { css } from 'styled-components'
+import { inject, observer } from 'mobx-react'
+// import { css } from 'styled-components'
 import styled from '../theme/styled'
 
-import { Stores } from '../stores'
 import { AuthStore } from '../stores/AuthStore'
 
 import { RouteComponentProps } from 'react-router'
@@ -14,56 +13,41 @@ interface IProps extends RouteComponentProps<{}> {
   authStore?: AuthStore,
 }
 
-@inject((stores: Stores) => ({
-  authStore: stores.authStore,
+export const NavBar = inject('authStore')(observer(function NavBar(props: IProps) {
+  function handleLogout(e : React.MouseEvent<HTMLElement>) {
+    authStore!.logout()
+    history.push('')
+  }
+  const { className, authStore, history } = props
+  const { isAuthenticated } = authStore!
+  return (
+    <NavContainer className={className}>
+      <MainLinks>
+        <Link to="/">Front page</Link>
+        <Link to="/users">Users page</Link>
+      </MainLinks>
+      { isAuthenticated ?
+      <Link to="#" role="button" onClick={handleLogout}>Logout</Link> :
+      <Link to="/login">Login</Link>
+      }
+    </NavContainer>
+  )
 }))
-export class NavBar extends React.PureComponent<IProps> {
-  handleLogout = (e : React.MouseEvent<HTMLElement>) => {
-    this.props.authStore!.logout()
-    this.props.history.push('')
-  }
-  render() {
-    const { isAuthenticated } = this.props.authStore!
-    return (
-      <NavContainer className={this.props.className}>
-        <NavLinkList>
-          <NavListItem><NavListLink to="/">Front page</NavListLink></NavListItem>
-          <NavListItem><NavListLink to="/users">Users page</NavListLink></NavListItem>
-        </NavLinkList>
-        { isAuthenticated ?
-        <LogoutButton onClick={this.handleLogout}>Logout</LogoutButton> :
-        <NavListLink to="/login">Login</NavListLink>
-        }
-      </NavContainer>
-    )
-  }
-}
 
 const NavContainer = styled.nav`
   align-items: center;
   display: flex;
-  height: 60px;
   justify-content: space-between;
-  margin: 20px;
+  margin: 1rem;
 `
-const NavLinkList = styled.ul`
-  display: flex;
-`
-const NavListItem = styled.li`
-  margin-right: 10px;
-  &:last-child {
-    margin-right: 0;
-  }
-`
-const linkStyles = css`
+const Link = styled(NavLink)`
   background-color: ${({ theme }) => theme.color.white };
   border: 1px solid ${({ theme }) => theme.color.textDark };
   box-sizing: border-box;
   color: ${({ theme }) => theme.color.textDark };
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSize.small };
-  height: 100%;
-  padding: 20px 10px 20px 10px;
+  padding: 1rem;
   text-decoration: none;
   &:hover {
     background-color: ${({ theme }) => theme.color.primary };
@@ -71,9 +55,12 @@ const linkStyles = css`
   }
   transition: 0.2s all;
 `
-const LogoutButton = styled.button`
-  ${linkStyles}
-`
-const NavListLink = styled(NavLink)`
-  ${linkStyles}
+const MainLinks = styled.div`
+  display: flex;
+  ${Link} {
+    margin-right: 1rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 `

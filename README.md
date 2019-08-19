@@ -24,6 +24,14 @@ There's a set of utility functions for helping to manage the images that you can
 * `rm-containers <grepped-string>` eg. `rm-containers teemukoivisto` will first stop all the running containers with specified string in their name and then remove them.
 * `rm-images <grepped-string>`  eg. `rm-images react` will do the same thing as `rm-containers` but also delete all their images.
 
+## TODO
+
+* Make dropdown list items buttons for triggering onClick-event with enter. BUT remember that there's some stupid bug with outlines that causes them to overlap when buttons are next to each other with `position: absolute` in the parent element.
+* Use focus trap with eg modals, maybe. I don't know. Is aria-compatibility that big deal?
+* Invent a color palette.
+* Example form for adding/updating/deleting items.
+* Add local or sessionStorage.
+
 ## Git commands
 
 * `git tag -l` will list all the tags.

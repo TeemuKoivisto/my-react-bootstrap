@@ -55,7 +55,7 @@ export const Button = styled(ButtonEl)<IProps>`
   font-size: ${({ theme }) => theme.fontSize.small };
   justify-content: center;
   min-width: 100px;
-  padding: 10px 20px 10px 20px;
+  padding: 0.5rem 1.5rem;
   text-decoration: none;
   width: ${({ fullWidth }) => fullWidth ? '100%' : ''};
   &:hover {

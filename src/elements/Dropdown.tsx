@@ -87,7 +87,7 @@ const Button = styled.button`
   display: flex;
   font-size: 16px;
   justify-content: center;
-  padding: 8px 12px 8px 16px;
+  padding: 0.5rem 0.75rem 0.5rem 1rem;
   position: relative;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   &:hover {

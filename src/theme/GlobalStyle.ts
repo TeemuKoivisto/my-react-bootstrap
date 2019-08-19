@@ -21,4 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
+  html.scroll-lock {
+    overflow: hidden;
+  }
 `

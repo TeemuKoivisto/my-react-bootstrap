@@ -3,6 +3,7 @@ import styled from '../theme/styled'
 import { FiX } from 'react-icons/fi'
 
 import useClickOutside from '../hooks/useClickOutside'
+import useScrollLock from '../hooks/useScrollLock'
 
 import { Modal } from '../elements/Modal'
 import { Button } from '../elements/Button'
@@ -21,6 +22,7 @@ export function ExampleModal(props: IProps) {
   }
   const ref = useRef(null)
   useClickOutside(ref, (e) => handleClose(), isOpen)
+  useScrollLock(isOpen)
   return (
     <Modal className={className}
       isOpen={isOpen}
