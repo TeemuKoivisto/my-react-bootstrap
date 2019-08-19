@@ -27,10 +27,14 @@ There's a set of utility functions for helping to manage the images that you can
 ## TODO
 
 * Make dropdown list items buttons for triggering onClick-event with enter. BUT remember that there's some stupid bug with outlines that causes them to overlap when buttons are next to each other with `position: absolute` in the parent element.
-* Use focus trap with eg modals, maybe. I don't know. Is aria-compatibility that big deal?
+* Fix Dropdown generics.
+* Use focus trap with eg modals, maybe. I don't know. Is aria-compatibility that big of a deal?
 * Invent a color palette.
 * Example form for adding/updating/deleting items.
 * Add local or sessionStorage.
+* Github pages deployment.
+* Manifest JSON customization.
+* Go through the whole AWS deployment pipeline once more...
 
 ## Git commands
 
