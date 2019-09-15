@@ -26,12 +26,6 @@ function InputEl(props: IProps) {
   function handleChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     !disabled && props.onChange!(event.target.value)
   }
-  // function handleFocus() {
-  //   props.onFocus!()
-  // }
-  // function handleBlur() {
-  //   props.onBlur!()
-  // }
   const {
     className, value, type, icon, iconPadding, placeholder, disabled, required, fullWidth, onFocus, onBlur
   } = props

@@ -61,13 +61,11 @@ function DropdownEl<T extends OptionValue>(props: IProps<T>) {
       </Button>
       <DropdownList open={menuOpen}>
       { options.map(o =>
-        <Option
-          key={o.key}
-          tabIndex={0}
-          selected={isSelected(o)}
-          onClick={selectOption(o)}
-        >
-          {o.value}
+        <Option key={o.key}>
+          <OptionButton
+            onClick={selectOption(o)}
+            selected={isSelected(o)}
+          >{o.value}</OptionButton>
         </Option>
       )}
       </DropdownList>
@@ -101,7 +99,7 @@ type DropdownProps = { open: boolean }
 const DropdownList = styled.ul<DropdownProps>`
   background-color: #fff;
   border-color: #b5b5b5;
-  border-radius: .15rem;
+  border-radius: 4px;
   border-style: solid;
   border-width: 1px;
   box-shadow: 1px 1px #b5b5b570;
@@ -119,16 +117,20 @@ const DropdownList = styled.ul<DropdownProps>`
   top: 0;
   transform-origin: 251px 0px;
 `
-type OptionProps = { selected: boolean }
-const Option = styled.li<OptionProps>`
+const Option = styled.li`
+`
+type OptionButtonProps = { selected: boolean }
+const OptionButton = styled.button<OptionButtonProps>`
   align-items: center;
   display: flex;
   background-color: ${({ selected }) => selected ? 'rgba(0, 0, 0, 0.08)' : '#fff'};
+  border: 0;
   border-bottom: 1px solid #e5e5e5;
-  border-radius: .15rem;
   cursor: pointer;
+  font-size: 1rem;
   padding: .66rem 1rem;
   transition: all 0.1s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  width: 100%;  
   z-index: 10;
   &:hover {
     background-color: rgba(0, 0, 0, 0.08);

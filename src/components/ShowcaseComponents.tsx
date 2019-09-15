@@ -33,7 +33,11 @@ export const ShowcaseComponents = inject('toastStore')(function ShowcaseComponen
   const [selectedOption, setSelectedOption] = useState('')
   const [modalOpen, setModalOpen] = useState(false)
   const [text, setText] = useState('')
-  const dropdownOptions = [{ key: 'a', value: 'Option1'}, { key: 'b', value: 'Option2'}]
+  const dropdownOptions = [
+    { key: 'a', value: 'Option1'},
+    { key: 'b', value: 'Option2'},
+    { key: 'c', value: 'Option3'},
+  ]
   return (
     <>
       <ExampleModal isOpen={modalOpen} onClose={handleModalClose}/>

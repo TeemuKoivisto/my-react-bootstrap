@@ -1,6 +1,11 @@
 import { createGlobalStyle } from './styled'
 
 export const GlobalStyle = createGlobalStyle`
+  html {
+    box-sizing: border-box;
+    font-family: 'Raleway',sans-serif;
+    font-size: 16px;
+  }
   body {
     margin: 0;
     padding: 0;

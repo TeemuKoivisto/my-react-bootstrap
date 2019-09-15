@@ -54,12 +54,13 @@ export const Button = styled(ButtonEl)<IProps>`
   display: flex;
   font-size: ${({ theme }) => theme.fontSize.medium };
   justify-content: center;
+  min-height: calc(2rem + 5px); // Scaled to the size of m-sized Spinner inside Button
   min-width: 100px;
   padding: 0.5rem 1.5rem;
   text-decoration: none;
   width: ${({ fullWidth }) => fullWidth ? '100%' : ''};
   &:hover {
-    box-shadow: 3px 3px #039be569;
+    box-shadow: 0 0 2px 2px #039be569;
   }
   transition: 0.2s all;
 `

@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { keyframes } from '../theme/styled'
 
 interface IProps {
+  className?: string
   size: 's' | 'm' | 'l'
   color?: string
 }
@@ -11,9 +12,10 @@ Spinner.defaultProps = {
 }
 
 export function Spinner(props: IProps) {
-  const { size, color } = props
+  const { className, size, color } = props
   return (
     <StyledSpinner
+      className={className}
       size={size}
       color={color}
     />
