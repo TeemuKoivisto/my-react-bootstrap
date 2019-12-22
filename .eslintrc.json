@@ -1,0 +1,27 @@
+{
+  "extends": ["react-app"],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    // "align": [1, "parameters"],
+    // "interface-name": [1, "always-prefix"],
+    "import/prefer-default-export": 0,
+    "semi": [1, "never"],
+    "comma-dangle": 0,
+    "no-confusing-arrow": 0,
+    "no-unused-vars": 0,
+    // "variable-name": [1, "check-format", "allow-pascal-case", "allow-leading-underscore"],
+    "function-name": 0,
+    "import-name": 0,
+    "import/order": 0,
+    "lines-between-class-members": 0,
+    "quotes": [1, "single"],
+    "import/no-unresolved": 0,
+    "react/jsx-filename-extension": [1, {
+      "extensions": [
+        ".jsx",
+        ".tsx"
+      ]
+    }]
+  }
+}
