@@ -13,7 +13,7 @@ interface IProps extends RouteComponentProps<{}> {
   authStore?: AuthStore,
 }
 
-export const NavBar = inject('authStore')(observer(function NavBar(props: IProps) {
+export const NavBar = inject('authStore')(observer((props: IProps) => {
   function handleLogout(e : React.MouseEvent<HTMLElement>) {
     authStore!.logout()
     history.push('')
@@ -41,17 +41,17 @@ const NavContainer = styled.nav`
   margin: 1rem;
 `
 const Link = styled(NavLink)`
-  background-color: ${({ theme }) => theme.color.white };
-  border: 1px solid ${({ theme }) => theme.color.textDark };
+  background-color: ${({ theme }) => theme.color.white};
+  border: 1px solid ${({ theme }) => theme.color.textDark};
   box-sizing: border-box;
-  color: ${({ theme }) => theme.color.textDark };
+  color: ${({ theme }) => theme.color.textDark};
   cursor: pointer;
-  font-size: ${({ theme }) => theme.fontSize.medium };
+  font-size: ${({ theme }) => theme.fontSize.medium};
   padding: 1rem;
   text-decoration: none;
   &:hover {
-    background-color: ${({ theme }) => theme.color.primary };
-    color: ${({ theme }) => theme.color.white };
+    background-color: ${({ theme }) => theme.color.primary};
+    color: ${({ theme }) => theme.color.white};
   }
   transition: 0.2s all;
 `

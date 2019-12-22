@@ -11,11 +11,11 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
   h1,h2,h3,h4 {
-    font-family: ${({ theme }) => theme.font.text };
+    font-family: ${({ theme }) => theme.font.text};
   }
   * {
     box-sizing: border-box;
-    font-family: ${({ theme }) => theme.font.text };
+    font-family: ${({ theme }) => theme.font.text};
   }
   ul, ol {
     list-style: none;
