@@ -43,17 +43,17 @@ function InputEl(props: IProps) {
           onBlur={onBlur}
         />
         :
-      <StyledInput
-        value={value}
-        type={type}
-        iconPadding={iconPadding}
-        placeholder={placeholder}
-        disabled={disabled}
-        required={required}
-        onChange={handleChange}
-        onFocus={onFocus}
-        onBlur={onBlur}
-      />
+        <StyledInput
+          value={value}
+          type={type}
+          iconPadding={iconPadding}
+          placeholder={placeholder}
+          disabled={disabled}
+          required={required}
+          onChange={handleChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
+        />
       }
     </Container>
   )
@@ -62,14 +62,14 @@ function InputEl(props: IProps) {
 type ContainerProps = { fullWidth?: boolean }
 const Container = styled.div<ContainerProps>`
   align-items: center;
-  border: 1px solid ${({ theme }) => theme.color.textDark };
+  border: 1px solid ${({ theme }) => theme.color.textDark};
   border-radius: 4px;
   display: flex;
   position: relative;
-  width: ${({ fullWidth }) => fullWidth ? '100%' : '180px' };
+  width: ${({ fullWidth }) => fullWidth ? '100%' : '180px'};
   &:focus {
     background-image: linear-gradient(to right, #cefff8, #729EE74D);
-    color: ${({ theme }) => theme.color.textDark };
+    color: ${({ theme }) => theme.color.textDark};
     outline: auto 5px;
   }
   & > svg {
@@ -80,18 +80,18 @@ const Container = styled.div<ContainerProps>`
 const StyledTextarea = styled.textarea`
   border: 0;
   border-radius: 4px;
-  font-size: ${({ theme }) => theme.fontSize.medium };
+  font-size: ${({ theme }) => theme.fontSize.medium};
   height: 100%;
   min-height: 100px;
   padding: 0.5rem;
   width: 100%;
 `
 const StyledInput = styled.input<IProps>`
-  background-color: ${({ theme }) => theme.color.white };
+  background-color: ${({ theme }) => theme.color.white};
   border: 0;
   border-radius: 4px;
-  color: ${({ theme }) => theme.color.textDark };
-  font-size: ${({ theme }) => theme.fontSize.medium };
+  color: ${({ theme }) => theme.color.textDark};
+  font-size: ${({ theme }) => theme.fontSize.medium};
   padding: 0.5rem 0.5rem;
   padding-left: ${({ iconPadding }) => iconPadding || ''};
   text-decoration: none;
@@ -99,7 +99,7 @@ const StyledInput = styled.input<IProps>`
   width: 100%;
   &:focus {
     background-image: linear-gradient(to right,#fcffff,#e6f8ff4d);
-    color: ${({ theme }) => theme.color.textDark };
+    color: ${({ theme }) => theme.color.textDark};
   }
 `
 export const Input = styled(InputEl)``

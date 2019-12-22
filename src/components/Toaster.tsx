@@ -39,7 +39,7 @@ interface IProps {
   className?: string
   toastStore?: ToastStore
 }
-export const Toaster = inject('toastStore')(observer(function Toaster(props: IProps) {
+export const Toaster = inject('toastStore')(observer((props: IProps) => {
   const { className, toastStore } = props
   return (
     <ToastsList className={className}>
@@ -51,7 +51,7 @@ export const Toaster = inject('toastStore')(observer(function Toaster(props: IPr
 }))
 
 function getTypeIcon(type: string, size: number = 24) {
-  switch(type) {
+  switch (type) {
     case 'info':
       return <FiAlertCircle size={size} />
     case 'warning':
@@ -65,7 +65,7 @@ function getTypeIcon(type: string, size: number = 24) {
 }
 
 function getTypeColor(type: string, theme: ITheme) {
-  switch(type) {
+  switch (type) {
     case 'info':
       return theme.color.blue
     case 'warning':

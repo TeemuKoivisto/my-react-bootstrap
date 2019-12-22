@@ -60,14 +60,14 @@ function DropdownEl<T extends OptionValue>(props: IProps<T>) {
         <SvgWrapper><FiChevronDown size={18}/></SvgWrapper>
       </Button>
       <DropdownList open={menuOpen}>
-      { options.map(o =>
+        { options.map(o =>
         <Option key={o.key}>
           <OptionButton
             onClick={selectOption(o)}
             selected={isSelected(o)}
           >{o.value}</OptionButton>
         </Option>
-      )}
+        )}
       </DropdownList>
     </div>
   )
@@ -79,7 +79,7 @@ const SvgWrapper = styled.span`
 const Button = styled.button`
   align-items: center;
   background: transparent;
-  border: 1px solid ${({ theme }) => theme.color.textDark };
+  border: 1px solid ${({ theme }) => theme.color.textDark};
   border-radius: 26px;
   cursor: pointer;
   display: flex;
@@ -103,7 +103,7 @@ const DropdownList = styled.ul<DropdownProps>`
   border-style: solid;
   border-width: 1px;
   box-shadow: 1px 1px #b5b5b570;
-  color: ${({ theme }) => theme.color.textDark };
+  color: ${({ theme }) => theme.color.textDark};
   display: ${({ open }) => open ? 'block' : 'none'};
   list-style: none;
   margin: 0;

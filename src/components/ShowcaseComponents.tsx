@@ -13,7 +13,16 @@ import { ToastStore } from '../stores/ToastStore'
 interface IProps {
   toastStore?: ToastStore
 }
-export const ShowcaseComponents = inject('toastStore')(function ShowcaseComponents(props: IProps) {
+export const ShowcaseComponents = inject('toastStore')((props: IProps) => {
+  const { toastStore } = props
+  const [selectedOption, setSelectedOption] = useState('')
+  const [modalOpen, setModalOpen] = useState(false)
+  const [text, setText] = useState('')
+  const dropdownOptions = [
+    { key: 'a', value: 'Option1' },
+    { key: 'b', value: 'Option2' },
+    { key: 'c', value: 'Option3' },
+  ]
   function handleSelect(option: { key: string | number, value: string }) {
     toastStore!.createToast('You selected something', 'warning')
     setSelectedOption(option.value)
@@ -29,15 +38,6 @@ export const ShowcaseComponents = inject('toastStore')(function ShowcaseComponen
     toastStore!.createToast('You closed modal', 'info')
     setModalOpen(false)
   }
-  const { toastStore } = props
-  const [selectedOption, setSelectedOption] = useState('')
-  const [modalOpen, setModalOpen] = useState(false)
-  const [text, setText] = useState('')
-  const dropdownOptions = [
-    { key: 'a', value: 'Option1'},
-    { key: 'b', value: 'Option2'},
-    { key: 'c', value: 'Option3'},
-  ]
   return (
     <>
       <ExampleModal isOpen={modalOpen} onClose={handleModalClose}/>

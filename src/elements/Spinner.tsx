@@ -54,11 +54,11 @@ const animationRotate = keyframes`
   }
 `
 const StyledSpinner = styled.div<IProps>`
-  animation: ${ animationRotate } 0.8s infinite linear;
+  animation: ${animationRotate} 0.8s infinite linear;
   border: ${({ theme, color }) => `solid ${color ? theme.color[color] : theme.color.textDark}`};
   border-right-color: transparent;
   border-radius: 50%;
   border-width: ${({ size }) => getSize(size).borderWidth};
-  height: ${({ size }) =>  getSize(size).height};
-  width: ${({ size }) =>  getSize(size).width};
+  height: ${({ size }) => getSize(size).height};
+  width: ${({ size }) => getSize(size).width};
 `

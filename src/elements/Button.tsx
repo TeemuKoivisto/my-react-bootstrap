@@ -46,13 +46,13 @@ function ButtonEl(props: IProps) {
 
 export const Button = styled(ButtonEl)<IProps>`
   align-items: center;
-  background-color: ${({ theme }) => theme.color.secondary };
-  border: 1px solid ${({ theme }) => theme.color.textDark };
+  background-color: ${({ theme }) => theme.color.secondary};
+  border: 1px solid ${({ theme }) => theme.color.textDark};
   border-radius: 4px;
-  color: ${({ theme }) => theme.color.textDark };
+  color: ${({ theme }) => theme.color.textDark};
   cursor: pointer;
   display: flex;
-  font-size: ${({ theme }) => theme.fontSize.medium };
+  font-size: ${({ theme }) => theme.fontSize.medium};
   justify-content: center;
   min-height: calc(2rem + 5px); // Scaled to the size of m-sized Spinner inside Button
   min-width: 100px;
