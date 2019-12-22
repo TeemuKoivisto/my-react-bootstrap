@@ -9,7 +9,7 @@ ENV GENERATE_SOURCEMAP false
 
 WORKDIR /usr/my-react-bootstrap
 
-COPY package.json yarn.lock tsconfig.json tsconfig.prod.json tslint.json ./
+COPY package.json yarn.lock tsconfig.json tsconfig.prod.json .eslintrc.json ./
 RUN yarn
 
 COPY ./src ./src
