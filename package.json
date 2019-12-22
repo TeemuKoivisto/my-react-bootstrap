@@ -1,6 +1,6 @@
 {
   "name": "my-react-bootstrap",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "author": "Teemu Koivisto",
   "dependencies": {
     "axios": "^0.19.0",
